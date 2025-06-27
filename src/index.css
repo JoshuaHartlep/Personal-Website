@@ -28,6 +28,96 @@
   .card {
     @apply rounded-lg p-6 border border-gray-100 dark:border-gray-700 bg-white dark:bg-gray-800;
   }
+
+  /* Parallax background optimizations */
+  .parallax-container {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    will-change: transform;
+  }
+
+  .parallax-background {
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+
+  /* Seamless section transitions */
+  .section-overlap {
+    position: relative;
+    margin-bottom: -8rem;
+    z-index: 1;
+  }
+
+  .section-overlap:nth-child(2) {
+    z-index: 2;
+  }
+
+  .section-overlap:nth-child(3) {
+    z-index: 3;
+  }
+
+  .section-overlap:nth-child(4) {
+    z-index: 4;
+  }
+
+  /* Background image optimizations */
+  .bg-full-stretch {
+    background-size: 100% 100% !important;
+    background-position: center center !important;
+  }
+
+  .bg-smooth-transition {
+    transition: background-image 0.3s ease-in-out;
+  }
+
+  /* Improved scrolling performance */
+  .scroll-smooth {
+    scroll-behavior: smooth;
+  }
+
+  /* Ensure proper stacking and overflow */
+  .parallax-section {
+    position: relative;
+    overflow: hidden;
+    height: 100vh !important; /* Force exact viewport height */
+    margin: 0;
+    padding: 0;
+    border: none;
+  }
+
+  /* Optimized background image sizing for full coverage */
+  .parallax-section[style*="background-image"] {
+    background-attachment: scroll !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    background-position: center center !important;
+  }
+
+  /* Section-specific positioning adjustments */
+  .parallax-section[data-section="hero"] {
+    background-position: center 20% !important;
+  }
+
+  .parallax-section[data-section="blog"] {
+    background-position: center 30% !important;
+  }
+
+  .parallax-section[data-section="projects"] {
+    background-position: center 25% !important;
+  }
+
+  .parallax-section[data-section="contact"] {
+    background-position: center center !important;
+  }
+
+  /* Smooth scrolling for better user experience */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
 }
 
 /* Exclude navigation buttons and theme dropdown from scroll animations */

@@ -1,6 +1,6 @@
 const FADE_UP_SELECTOR = '[data-animate="fade-up"]:not(.sticky-nav-container):not(.sticky-nav-container *):not(.theme-dropdown):not(.theme-dropdown *)';
 
-export function initFadeUpAnimations(stagger = 80) {
+export function initFadeUpAnimations() {
   console.log('[fade-up] Initializing scroll-triggered animations...');
   if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
     console.warn('[fade-up] IntersectionObserver not supported. Showing all elements.');

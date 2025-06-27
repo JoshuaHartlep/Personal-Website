@@ -16,11 +16,7 @@ if (typeof window !== 'undefined') {
   const initAnimations = () => {
     // Small delay to ensure React has finished rendering
     setTimeout(() => {
-      initFadeUpAnimations({
-        stagger: 80,
-        threshold: 0.2,
-        rootMargin: '0px 0px -10% 0px'
-      });
+      initFadeUpAnimations();
     }, 100);
   };
 

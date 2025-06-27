@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { useRef, useEffect, useState } from 'react';
 import BlogCard from './BlogCard';
 import { getBlogPosts } from '../utils/blog';
@@ -81,20 +80,24 @@ const Blog: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="h-full flex flex-col justify-center">
+        <div className="flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
       </div>
     );
   }
 
   return (
-    <section id="blog" className="min-h-screen py-24">
-      <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
-        <h1 className="text-4xl font-bold text-center mb-16">Blogs</h1>
-        <div data-animate="fade-up">{renderSection('Tech Write-ups', writeups, writeupsRef)}</div>
-        <div data-animate="fade-up">{renderSection('Personal Reflections', reflections, reflectionsRef)}</div>
-      </div>
-    </section>
+    <div className="h-full flex flex-col justify-center">
+      <section id="blog" className="py-24 relative z-10">
+        <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl font-bold text-center mb-16">Blogs</h1>
+          <div data-animate="fade-up">{renderSection('Tech Write-ups', writeups, writeupsRef)}</div>
+          <div data-animate="fade-up">{renderSection('Personal Reflections', reflections, reflectionsRef)}</div>
+        </div>
+      </section>
+    </div>
   );
 };
 

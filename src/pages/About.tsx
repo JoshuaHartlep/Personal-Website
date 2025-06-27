@@ -1,5 +1,3 @@
-import { motion } from 'framer-motion';
-
 const About: React.FC = () => {
   return (
     <div className="space-y-8">

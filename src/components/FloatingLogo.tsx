@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import logo from '../assets/logo.png'; // Make sure the PNG is named logo.png in assets
 

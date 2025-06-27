@@ -27,7 +27,7 @@ const ThemeDropdown = () => {
   // Listen for system theme changes
   useEffect(() => {
     if (theme !== 'device') return;
-    const listener = (e: MediaQueryListEvent) => {
+    const listener = () => {
       applyTheme('device');
     };
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
