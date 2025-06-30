@@ -223,22 +223,34 @@
   transform: translateY(16px);
 }
 
-/* Sticky navigation specific styles */
-.sticky-nav-container {
-  /* Ensure sticky positioning works correctly */
-  position: relative;
-  z-index: 100;
+/* Navigation buttons specific styles */
+.navigation-buttons {
+  /* Ensure navigation is always interactive */
+  pointer-events: auto !important;
+  /* Create independent stacking context */
+  isolation: isolate;
 }
 
-.sticky-nav-container.fixed {
-  /* Fixed positioning when sticky */
-  position: fixed;
-  top: 1rem;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  /* Ensure no transform conflicts */
+.navigation-buttons button {
+  /* Ensure all buttons remain clickable */
+  pointer-events: auto !important;
+  /* Ensure buttons are in front */
+  position: relative;
+  z-index: 1;
+  /* Prevent interference from parent transforms */
   transform: none !important;
+}
+
+/* Prevent section content from interfering with sticky navigation */
+.parallax-section {
+  /* Ensure section content doesn't block sticky nav */
+  position: relative;
+  z-index: auto;
+}
+
+.parallax-section > .relative {
+  /* Limit section content z-index to stay below navigation */
+  z-index: 10;
 }
 
 /* Accessibility: Respect reduced motion preferences */

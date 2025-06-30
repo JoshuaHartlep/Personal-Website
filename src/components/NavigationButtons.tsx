@@ -79,19 +79,35 @@ const NavigationButtons = () => {
 
   return (
     <>
-      {/* Spacer div for intersection observer */}
-      <div ref={containerRef} className="h-0" />
+      {/* Spacer div for intersection observer - positioned at bottom of hero text */}
+      <div 
+        ref={containerRef} 
+        className="absolute"
+        style={{
+          top: 'calc(40 + 4rem)', // Position after hero content
+          left: 0,
+          right: 0,
+          height: '1px'
+        }}
+      />
       
       {/* Navigation Buttons */}
       <div
-        className={`sticky-nav-container navigation-buttons ${
-          isSticky ? 'fixed' : ''
-        } transition-all duration-200 px-4`}
+        className={`navigation-buttons transition-all duration-300 px-4 ${isSticky ? 'pt-4' : ''}`}
         style={{
+          /* Position initially under hero subheader, then become sticky */
+          position: isSticky ? 'fixed' : 'absolute',
+          top: isSticky ? '0' : 'calc(30vh + 1rem)',
+          left: 0,
+          right: 0,
           /* Ensure no transform conflicts with animations */
           transform: 'none',
-          /* Prevent any animation interference */
-          willChange: isSticky ? 'transform' : 'auto'
+          /* Force highest z-index to stay above all content */
+          zIndex: 999,
+          /* Ensure pointer events always work */
+          pointerEvents: 'auto',
+          /* Smooth transition between positions */
+          transition: 'all 0.3s ease-in-out'
         }}
       >
         <motion.div
@@ -110,7 +126,12 @@ const NavigationButtons = () => {
               whileTap={{ scale: 0.98 }}
               style={{
                 /* Ensure buttons are not affected by parent transforms */
-                transform: 'none'
+                transform: 'none',
+                /* Ensure buttons are always interactive */
+                pointerEvents: 'auto',
+                /* Prevent z-index issues */
+                position: 'relative',
+                zIndex: 2
               }}
             >
               <h2 className="text-base font-medium">{button.title}</h2>

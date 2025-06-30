@@ -130,6 +130,7 @@ const ParallaxBackground: React.FC<ParallaxBackgroundProps> = ({
   return (
     <div
       ref={containerRef}
+      id={sectionId}
       className={`parallax-section bg-smooth-transition ${className}`}
       data-section={sectionId}
       style={{

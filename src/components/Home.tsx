@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion';
-import NavigationButtons from './NavigationButtons';
 
 const Home = () => {
   const title = "Joshua Hartlep";
@@ -42,9 +41,6 @@ const Home = () => {
             </motion.p>
           </motion.div>
         </div>
-        
-        {/* Navigation buttons outside of animated container */}
-        <NavigationButtons />
       </section>
     </div>
   );

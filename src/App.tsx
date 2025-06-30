@@ -7,6 +7,7 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import FloatingLogo from './components/FloatingLogo';
 import ThemeDropdown from './components/ThemeDropdown';
+import NavigationButtons from './components/NavigationButtons';
 import ParallaxBackground from './components/ParallaxBackground';
 
 // Import background images
@@ -25,6 +26,9 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       {/* Theme Dropdown */}
       <ThemeDropdown />
+
+      {/* Navigation Buttons - Positioned globally to maintain interactivity */}
+      <NavigationButtons />
 
       {/* Floating Logo/Icon */}
       <FloatingLogo />
