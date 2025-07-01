@@ -12,6 +12,7 @@ export interface BlogPost {
   tags: string[];
   content: string;
   readTime: number;
+  thumbnailUrl?: string;
 }
 
 // Use Vite's import.meta.glob to load all markdown files
@@ -45,6 +46,7 @@ export const getBlogPosts = async (category?: string): Promise<BlogPost[]> => {
       tags: data.tags || [],
       content: markdownContent,
       readTime: calculateReadTime(markdownContent),
+      thumbnailUrl: data.thumbnail,
     });
   }
 

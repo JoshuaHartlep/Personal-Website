@@ -26,7 +26,7 @@ Any dependencies or assumptions
 
 Once you share the plan, I will review it and respond with “yes” to proceed, or suggest changes.
 Do not start writing code until I confirm the plan.
-
+No need to add a watermark that says generated with claude code or anything like that.      
 ## Architecture
 
 ### Key Technologies

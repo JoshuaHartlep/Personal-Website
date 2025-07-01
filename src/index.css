@@ -81,10 +81,7 @@
   .parallax-section {
     position: relative;
     overflow: hidden;
-    height: 100vh !important; /* Force exact viewport height */
-    margin: 0;
-    padding: 0;
-    border: none;
+    min-height: 100vh;
   }
 
   /* Optimized background image sizing for full coverage */
@@ -105,7 +102,8 @@
   }
 
   .parallax-section[data-section="projects"] {
-    background-position: center 25% !important;
+    background-position: center top !important;
+    background-size: cover !important;
   }
 
   .parallax-section[data-section="contact"] {
@@ -117,6 +115,21 @@
     html {
       scroll-behavior: smooth;
     }
+  }
+
+  /* Blog card optimizations */
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Ensure blog cards fit properly in containers */
+  .blog-card-container {
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
   }
 }
 

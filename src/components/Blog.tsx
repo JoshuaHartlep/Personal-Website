@@ -41,7 +41,8 @@ const Blog: React.FC = () => {
       onClick={onClick}
       className={`absolute top-1/2 -translate-y-1/2 ${
         direction === 'left' ? 'left-0' : 'right-0'
-      } p-2 rounded-full bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors z-10`}
+      } p-2 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-200 dark:hover:bg-gray-600 z-10 font-mono`}
+      style={{ boxShadow: '3px 3px 0px rgba(0,0,0,0.2)' }}
       aria-label={`Scroll ${direction}`}
     >
       <svg
@@ -49,24 +50,25 @@ const Blog: React.FC = () => {
         fill="none"
         stroke="currentColor"
         viewBox="0 0 24 24"
+        strokeWidth={3}
       >
         {direction === 'left' ? (
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          <path strokeLinecap="square" strokeLinejoin="miter" d="M15 19l-7-7 7-7" />
         ) : (
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          <path strokeLinecap="square" strokeLinejoin="miter" d="M9 5l7 7-7 7" />
         )}
       </svg>
     </button>
   );
 
   const renderSection = (title: string, posts: BlogPost[], ref: React.RefObject<HTMLDivElement>) => (
-    <div className="mb-16">
-      <h2 className="text-3xl font-bold mb-8">{title}</h2>
-      <div className="relative">
+    <div className="mb-12">
+      <h2 className="text-2xl font-bold mb-6 font-mono">{title}</h2>
+      <div className="relative h-[40vh] bg-white/5 dark:bg-gray-900/20 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
         {renderScrollButton('left', () => scroll(ref, 'left'))}
         <div
           ref={ref}
-          className="flex space-x-6 overflow-x-auto pb-6 px-4 scrollbar-hide"
+          className="flex space-x-6 overflow-x-auto h-full scrollbar-hide"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {posts.map((post) => (
@@ -89,12 +91,18 @@ const Blog: React.FC = () => {
   }
 
   return (
-    <div className="h-full flex flex-col justify-center">
-      <section id="blog" className="py-24 relative z-10">
+    <div className="min-h-screen flex flex-col justify-start pt-8">
+      <section id="blog" className="py-8 pb-20 relative z-10">
         <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-16">Blogs</h1>
-          <div data-animate="fade-up">{renderSection('Tech Write-ups', writeups, writeupsRef)}</div>
-          <div data-animate="fade-up">{renderSection('Personal Reflections', reflections, reflectionsRef)}</div>
+          <h1 className="text-4xl font-bold text-center mb-12 font-mono">Blogs</h1>
+          <div className="space-y-8">
+            <div data-animate="fade-up">
+              {renderSection('Tech Write-ups', writeups, writeupsRef)}
+            </div>
+            <div data-animate="fade-up">
+              {renderSection('Personal Reflections', reflections, reflectionsRef)}
+            </div>
+          </div>
         </div>
       </section>
     </div>
