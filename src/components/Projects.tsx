@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import ProjectModal from './ProjectModal';
 
 const projects = [
@@ -36,12 +35,13 @@ const Projects = () => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   return (
-    <div className="h-full flex flex-col justify-center">
-      <section id="projects" className="py-16 relative z-10">
-        <div data-animate="fade-up" className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 font-mono">Projects</h2>
-          <div data-animate="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project) => (
+    <div className="min-h-screen flex flex-col justify-start pt-8">
+      <section id="projects" className="py-8 pb-20 relative z-10">
+        <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
+          <h2 className="text-4xl font-bold text-center mb-8 font-mono">Projects</h2>
+          <div className="h-[80vh] overflow-y-auto scrollbar-hide pb-12">
+            <div data-animate="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project) => (
               <div
                 key={project.id}
                 className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden"
@@ -119,8 +119,9 @@ const Projects = () => {
                     </button>
                   </div>
                 </div>
-              </div>
-            ))}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 

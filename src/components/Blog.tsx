@@ -1,11 +1,9 @@
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import BlogCard from './BlogCard';
 import { getBlogPosts } from '../utils/blog';
 import type { BlogPost } from '../utils/blog';
 
 const Blog: React.FC = () => {
-  const writeupsRef = useRef<HTMLDivElement>(null);
-  const reflectionsRef = useRef<HTMLDivElement>(null);
   const [writeups, setWriteups] = useState<BlogPost[]>([]);
   const [reflections, setReflections] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
@@ -29,53 +27,15 @@ const Blog: React.FC = () => {
     loadPosts();
   }, []);
 
-  const scroll = (ref: React.RefObject<HTMLDivElement>, direction: 'left' | 'right') => {
-    if (ref.current) {
-      const scrollAmount = direction === 'left' ? -400 : 400;
-      ref.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
-  };
-
-  const renderScrollButton = (direction: 'left' | 'right', onClick: () => void) => (
-    <button
-      onClick={onClick}
-      className={`absolute top-1/2 -translate-y-1/2 ${
-        direction === 'left' ? 'left-0' : 'right-0'
-      } p-2 border-2 border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg hover:bg-gray-200 dark:hover:bg-gray-600 z-10 font-mono`}
-      style={{ boxShadow: '3px 3px 0px rgba(0,0,0,0.2)' }}
-      aria-label={`Scroll ${direction}`}
-    >
-      <svg
-        className="w-6 h-6"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-        strokeWidth={3}
-      >
-        {direction === 'left' ? (
-          <path strokeLinecap="square" strokeLinejoin="miter" d="M15 19l-7-7 7-7" />
-        ) : (
-          <path strokeLinecap="square" strokeLinejoin="miter" d="M9 5l7 7-7 7" />
-        )}
-      </svg>
-    </button>
-  );
-
-  const renderSection = (title: string, posts: BlogPost[], ref: React.RefObject<HTMLDivElement>) => (
-    <div className="mb-12">
-      <h2 className="text-2xl font-bold mb-6 font-mono">{title}</h2>
-      <div className="relative h-[40vh] bg-white/5 dark:bg-gray-900/20 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
-        {renderScrollButton('left', () => scroll(ref, 'left'))}
-        <div
-          ref={ref}
-          className="flex space-x-6 overflow-x-auto h-full scrollbar-hide"
-          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-        >
-          {posts.map((post) => (
-            <BlogCard key={post.slug} post={post} />
-          ))}
-        </div>
-        {renderScrollButton('right', () => scroll(ref, 'right'))}
+  const renderColumn = (title: string, posts: BlogPost[]) => (
+    <div className="flex flex-col h-full">
+      <h2 className="text-2xl font-bold mb-4 font-mono sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">
+        {title}
+      </h2>
+      <div className="flex-1 overflow-y-auto max-h-[75vh] space-y-3 pr-2 scrollbar-hide pb-6">
+        {posts.map((post) => (
+          <BlogCard key={post.slug} post={post} />
+        ))}
       </div>
     </div>
   );
@@ -94,13 +54,13 @@ const Blog: React.FC = () => {
     <div className="min-h-screen flex flex-col justify-start pt-8">
       <section id="blog" className="py-8 pb-20 relative z-10">
         <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-12 font-mono">Blogs</h1>
-          <div className="space-y-8">
+          <h1 className="text-4xl font-bold text-center mb-8 font-mono">Blogs</h1>
+          <div className="grid grid-cols-2 gap-8 h-[80vh]">
             <div data-animate="fade-up">
-              {renderSection('Tech Write-ups', writeups, writeupsRef)}
+              {renderColumn('Tech Write-ups', writeups)}
             </div>
             <div data-animate="fade-up">
-              {renderSection('Personal Reflections', reflections, reflectionsRef)}
+              {renderColumn('Personal Reflections', reflections)}
             </div>
           </div>
         </div>

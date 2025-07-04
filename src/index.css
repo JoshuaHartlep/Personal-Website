@@ -131,6 +131,16 @@
     align-items: flex-end;
     height: 100%;
   }
+
+  /* Hide scrollbars while maintaining scroll functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+  }
 }
 
 /* Exclude navigation buttons and theme dropdown from scroll animations */
@@ -150,13 +160,23 @@
   transform: none !important;
   transition: none !important;
   pointer-events: auto !important;
-  z-index: 200 !important;
+  z-index: 9999 !important;
+  position: fixed !important;
+  isolation: isolate !important;
 }
 
 .theme-dropdown button {
   /* Ensure buttons are clickable */
   pointer-events: auto !important;
   transform: none !important;
+  position: relative !important;
+  z-index: 9999 !important;
+}
+
+.theme-dropdown .animate-fade-in {
+  /* Ensure dropdown menu is clickable */
+  pointer-events: auto !important;
+  z-index: 10000 !important;
 }
 
 /* Fade-up animation styles - Reversible */
@@ -266,6 +286,22 @@
   z-index: 10;
 }
 
+/* Dropdown animation */
+.animate-fade-in {
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Accessibility: Respect reduced motion preferences */
 @media (prefers-reduced-motion: reduce) {
   [data-animate*="fade-up"] {
@@ -279,5 +315,9 @@
     transition: none !important;
     transform: none !important;
     opacity: 1 !important;
+  }
+  
+  .animate-fade-in {
+    animation: none !important;
   }
 } 

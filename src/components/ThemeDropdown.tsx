@@ -90,14 +90,18 @@ const ThemeDropdown = () => {
   return (
     <div 
       ref={dropdownRef} 
-      className="theme-dropdown fixed top-6 right-6 z-[200]"
+      className="theme-dropdown fixed top-6 right-6 z-[9999]"
       style={{
         /* Ensure no transform conflicts with animations */
-        transform: 'none',
+        transform: 'none !important',
         /* Prevent any animation interference */
         willChange: 'auto',
         /* Ensure it's always clickable */
-        pointerEvents: 'auto'
+        pointerEvents: 'auto !important',
+        /* Ensure it's always visible */
+        opacity: '1 !important',
+        /* Create its own stacking context */
+        isolation: 'isolate'
       }}
     >
       <button
@@ -106,12 +110,12 @@ const ThemeDropdown = () => {
         aria-label="Theme menu"
         style={{
           /* Ensure button is clickable */
-          pointerEvents: 'auto',
+          pointerEvents: 'auto !important',
           /* Prevent transform conflicts */
-          transform: 'none',
+          transform: 'none !important',
           /* Ensure proper positioning */
           position: 'relative',
-          zIndex: 200
+          zIndex: 9999
         }}
       >
         {theme === 'dark' && options[0].icon}
@@ -124,11 +128,11 @@ const ThemeDropdown = () => {
           className="absolute right-0 top-full mt-2 w-48 bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-800 py-2 animate-fade-in"
           style={{
             /* Ensure dropdown is above everything */
-            zIndex: 201,
+            zIndex: 10000,
             /* Prevent transform conflicts */
-            transform: 'none',
+            transform: 'none !important',
             /* Ensure it's clickable */
-            pointerEvents: 'auto'
+            pointerEvents: 'auto !important'
           }}
         >
           {options.map((opt) => (
@@ -142,7 +146,7 @@ const ThemeDropdown = () => {
               className={`w-full flex items-center gap-2 px-4 py-2 text-left text-gray-800 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors ${theme === opt.value ? 'font-bold bg-gray-100 dark:bg-gray-800' : ''}`}
               style={{
                 /* Ensure buttons are clickable */
-                pointerEvents: 'auto'
+                pointerEvents: 'auto !important'
               }}
             >
               {opt.icon}
