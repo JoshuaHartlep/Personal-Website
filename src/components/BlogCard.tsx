@@ -1,12 +1,32 @@
 import { Link } from 'react-router-dom';
 import type { BlogPost } from '../utils/blog';
 
+// Import all blog images
+import ChinaBlogStarPose from '../assets/ChinaBlogStarPose.jpg';
+import ChinaBlogFlag from '../assets/ChinaBlogFlag.JPG';
+
 interface BlogCardProps {
   post: BlogPost;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   const defaultThumbnail = post.category === 'writeups' ? '/default-writeup.png' : '/default-reflection.png';
+  
+  // Image mapping object - add new images here
+  const imageMap: Record<string, string> = {
+    'ChinaBlogStarPose.jpg': ChinaBlogStarPose,
+    'ChinaBlogFlag.JPG': ChinaBlogFlag,
+    'ChinaBlogFlag.jpg': ChinaBlogFlag, // Handle both cases
+  };
+  
+  // Map thumbnail names to imported images
+  const getThumbnailUrl = (thumbnailName?: string) => {
+    if (!thumbnailName) return defaultThumbnail;
+    
+    // Check if the image exists in our mapping
+    const mappedImage = imageMap[thumbnailName];
+    return mappedImage || defaultThumbnail;
+  };
   
   return (
     <div className="w-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden group relative"
@@ -18,10 +38,13 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
       <Link to={`/blog/${post.slug}`} className="block h-full">
         <div className="relative">
           <img
-            src={post.thumbnailUrl || defaultThumbnail}
+            src={getThumbnailUrl(post.thumbnailUrl)}
             alt={post.title}
             className="w-full h-45 object-cover border-b-2 border-gray-300 dark:border-gray-700"
-            style={{ imageRendering: 'pixelated' }}
+            style={{ 
+              imageRendering: 'pixelated',
+              objectPosition: (post.thumbnailUrl === 'ChinaBlogFlag.JPG' || post.thumbnailUrl === 'ChinaBlogFlag.jpg') ? 'center 30%' : 'center center'
+            }}
             onError={(e) => {
               const target = e.target as HTMLImageElement;
               target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2YjczODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5CTE9HPC90ZXh0Pjwvc3ZnPg==';

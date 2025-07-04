@@ -3,6 +3,7 @@ title: "Cultural Immersion in China: My Summer at Duke Kunshan University"
 date: "2024-03-18"
 category: "reflections"
 tags: ["china", "cultural-immersion", "duke-kunshan", "education", "travel"]
+thumbnail: "ChinaBlogFlag.jpg"
 ---
 
 # Cultural Immersion in China: My Summer at Duke Kunshan University

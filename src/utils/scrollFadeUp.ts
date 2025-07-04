@@ -1,7 +1,17 @@
 const FADE_UP_SELECTOR = '[data-animate="fade-up"]:not(.sticky-nav-container):not(.sticky-nav-container *):not(.theme-dropdown):not(.theme-dropdown *)';
 
+// Store the current observer to clean up on reinitialize
+let currentObserver: IntersectionObserver | null = null;
+
 export function initFadeUpAnimations() {
   console.log('[fade-up] Initializing scroll-triggered animations...');
+  
+  // Clean up existing observer if it exists
+  if (currentObserver) {
+    currentObserver.disconnect();
+    currentObserver = null;
+  }
+  
   if (typeof window === 'undefined' || !('IntersectionObserver' in window)) {
     console.warn('[fade-up] IntersectionObserver not supported. Showing all elements.');
     document.querySelectorAll(FADE_UP_SELECTOR).forEach(el => {
@@ -30,7 +40,7 @@ export function initFadeUpAnimations() {
     el.classList.add('fade-up-init');
   });
 
-  const observer = new IntersectionObserver((entries) => {
+  currentObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         // Element is entering viewport - animate in
@@ -54,7 +64,7 @@ export function initFadeUpAnimations() {
   });
 
   elements.forEach(el => {
-    observer.observe(el);
+    currentObserver!.observe(el);
   });
 
   console.log('[fade-up] IntersectionObserver set up for reversible animations.');
