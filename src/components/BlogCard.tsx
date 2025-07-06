@@ -3,7 +3,7 @@ import type { BlogPost } from '../utils/blog';
 
 // Import all blog images
 import ChinaBlogStarPose from '../assets/ChinaBlogStarPose.jpg';
-import ChinaBlogFlag from '../assets/ChinaBlogFlag.jpg';
+import ChinaBlogPic from '../assets/ChinaBlogPic.jpg';
 import InternshipBlogPic from '../assets/InternshipBlogPic.jpg';
 import AppleStockBlogPic from '../assets/AppleStockBlogPic.png';
 import NvidiaGTCParisBlogPic from '../assets/NvidiaGTCParisBlogPic.jpeg';
@@ -18,7 +18,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   // Image mapping object - add new images here
   const imageMap: Record<string, string> = {
     'ChinaBlogStarPose.jpg': ChinaBlogStarPose,
-    'ChinaBlogFlag.jpg': ChinaBlogFlag, // Handle both cases
+    'ChinaBlogPic.jpg': ChinaBlogPic, // Handle both cases
     'InternshipBlogPic.jpg': InternshipBlogPic,
     'AppleStockBlogPic.png': AppleStockBlogPic,
     'NvidiaGTCParisBlogPic.jpeg': NvidiaGTCParisBlogPic,
@@ -26,7 +26,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   
   // Custom positioning for specific images - add new positions here
   const positionMap: Record<string, string> = {
-    'ChinaBlogFlag.jpg': 'center 30%',
+    'ChinaBlogPic.jpg': 'center 30%',
     'InternshipBlogPic.jpg': 'center 42%', // horizontal then vertical
   };
   

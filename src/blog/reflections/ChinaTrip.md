@@ -3,7 +3,7 @@ title: "10 Days in China Changed How I Think About Everything"
 date: "2025-07-06"
 category: "reflections"
 tags: ["china", "cultural-immersion", "duke-kunshan", "travel", "perspective"]
-thumbnail: "ChinaBlogFlag.jpg"
+thumbnail: "ChinaBlogPic.jpg"
 ---
 
 # 10 Days in China Changed How I Think About Everything
