@@ -3,7 +3,10 @@ import type { BlogPost } from '../utils/blog';
 
 // Import all blog images
 import ChinaBlogStarPose from '../assets/ChinaBlogStarPose.jpg';
-import ChinaBlogFlag from '../assets/ChinaBlogFlag.JPG';
+import ChinaBlogFlag from '../assets/ChinaBlogFlag.jpg';
+import InternshipBlogPic from '../assets/InternshipBlogPic.jpg';
+import AppleStockBlogPic from '../assets/AppleStockBlogPic.png';
+import NvidiaGTCParisBlogPic from '../assets/NvidiaGTCParisBlogPic.jpeg';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -15,8 +18,16 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   // Image mapping object - add new images here
   const imageMap: Record<string, string> = {
     'ChinaBlogStarPose.jpg': ChinaBlogStarPose,
-    'ChinaBlogFlag.JPG': ChinaBlogFlag,
     'ChinaBlogFlag.jpg': ChinaBlogFlag, // Handle both cases
+    'InternshipBlogPic.jpg': InternshipBlogPic,
+    'AppleStockBlogPic.png': AppleStockBlogPic,
+    'NvidiaGTCParisBlogPic.jpeg': NvidiaGTCParisBlogPic,
+  };
+  
+  // Custom positioning for specific images - add new positions here
+  const positionMap: Record<string, string> = {
+    'ChinaBlogFlag.jpg': 'center 30%',
+    'InternshipBlogPic.jpg': 'center 42%', // horizontal then vertical
   };
   
   // Map thumbnail names to imported images
@@ -26,6 +37,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
     // Check if the image exists in our mapping
     const mappedImage = imageMap[thumbnailName];
     return mappedImage || defaultThumbnail;
+  };
+  
+  // Get custom positioning for an image
+  const getImagePosition = (thumbnailName?: string) => {
+    if (!thumbnailName) return 'center center';
+    return positionMap[thumbnailName] || 'center center';
   };
   
   return (
@@ -40,10 +57,10 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           <img
             src={getThumbnailUrl(post.thumbnailUrl)}
             alt={post.title}
-            className="w-full h-45 object-cover border-b-2 border-gray-300 dark:border-gray-700"
+            className="w-full h-[23rem] object-cover border-b-2 border-gray-300 dark:border-gray-700"
             style={{ 
               imageRendering: 'pixelated',
-              objectPosition: (post.thumbnailUrl === 'ChinaBlogFlag.JPG' || post.thumbnailUrl === 'ChinaBlogFlag.jpg') ? 'center 30%' : 'center center'
+              objectPosition: getImagePosition(post.thumbnailUrl)
             }}
             onError={(e) => {
               const target = e.target as HTMLImageElement;

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
 import Home from './components/Home';
@@ -92,14 +92,18 @@ const HomePageWrapper: React.FC = () => {
 };
 
 const App: React.FC = () => {
+  const location = useLocation();
+  
+  // Only show navigation buttons on the homepage
+  const showNavigationButtons = location.pathname === '/';
 
   return (
     <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       {/* Theme Dropdown */}
       <ThemeDropdown />
 
-      {/* Navigation Buttons - Positioned globally to maintain interactivity */}
-      <NavigationButtons />
+      {/* Navigation Buttons - Only shown on homepage */}
+      {showNavigationButtons && <NavigationButtons />}
 
       {/* Floating Logo/Icon */}
       <FloatingLogo />
