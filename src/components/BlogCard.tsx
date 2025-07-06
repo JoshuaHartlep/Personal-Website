@@ -46,7 +46,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   };
   
   return (
-    <div className="w-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden group relative min-h-0 flex-shrink-0"
+    <div className="w-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden group relative"
       style={{
         boxShadow: '4px 4px 0px rgba(0,0,0,0.2)',
         imageRendering: 'pixelated'
@@ -57,7 +57,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           <img
             src={getThumbnailUrl(post.thumbnailUrl)}
             alt={post.title}
-            className="w-full h-48 sm:h-56 md:h-64 lg:h-[23rem] object-cover border-b-2 border-gray-300 dark:border-gray-700"
+            className="w-full h-48 md:h-56 object-cover border-b-2 border-gray-300 dark:border-gray-700"
             style={{ 
               imageRendering: 'pixelated',
               objectPosition: getImagePosition(post.thumbnailUrl)

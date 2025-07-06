@@ -27,19 +27,6 @@ const Blog: React.FC = () => {
     loadPosts();
   }, []);
 
-  const renderColumn = (title: string, posts: BlogPost[]) => (
-    <div className="flex flex-col h-full">
-      <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 font-mono sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">
-        {title}
-      </h2>
-      <div className="flex-1 overflow-y-auto max-h-[60vh] md:max-h-[75vh] space-y-3 pr-2 scrollbar-hide pb-6">
-        {posts.map((post) => (
-          <BlogCard key={post.slug} post={post} />
-        ))}
-      </div>
-    </div>
-  );
-
   if (loading) {
     return (
       <div className="h-full flex flex-col justify-center">
@@ -55,13 +42,52 @@ const Blog: React.FC = () => {
       <section id="blog" className="py-8 pb-20 relative z-10">
         <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 font-mono">Blogs</h1>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 min-h-[70vh] md:h-[80vh]">
-            <div data-animate="fade-up" className="w-full">
-              {renderColumn('Tech Write-ups', writeups)}
+          
+          {/* Single scrollable container like Projects */}
+          <div className="h-[80vh] overflow-y-auto scrollbar-hide pb-12">
+            
+            {/* Mobile: Single column layout */}
+            <div className="block md:hidden space-y-8">
+              <div data-animate="fade-up">
+                <h2 className="text-xl font-bold mb-4 font-mono text-center">Tech Write-ups</h2>
+                <div className="space-y-4">
+                  {writeups.map((post) => (
+                    <BlogCard key={post.slug} post={post} />
+                  ))}
+                </div>
+              </div>
+              
+              <div data-animate="fade-up">
+                <h2 className="text-xl font-bold mb-4 font-mono text-center">Personal Reflections</h2>
+                <div className="space-y-4">
+                  {reflections.map((post) => (
+                    <BlogCard key={post.slug} post={post} />
+                  ))}
+                </div>
+              </div>
             </div>
-            <div data-animate="fade-up" className="w-full">
-              {renderColumn('Personal Reflections', reflections)}
+
+            {/* Desktop: Two column layout */}
+            <div className="hidden md:grid md:grid-cols-2 gap-8">
+              <div data-animate="fade-up">
+                <h2 className="text-2xl font-bold mb-4 font-mono text-center sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">Tech Write-ups</h2>
+                <div className="space-y-4">
+                  {writeups.map((post) => (
+                    <BlogCard key={post.slug} post={post} />
+                  ))}
+                </div>
+              </div>
+              
+              <div data-animate="fade-up">
+                <h2 className="text-2xl font-bold mb-4 font-mono text-center sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">Personal Reflections</h2>
+                <div className="space-y-4">
+                  {reflections.map((post) => (
+                    <BlogCard key={post.slug} post={post} />
+                  ))}
+                </div>
+              </div>
             </div>
+
           </div>
         </div>
       </section>
@@ -69,4 +95,4 @@ const Blog: React.FC = () => {
   );
 };
 
-export default Blog; 
+export default Blog;
