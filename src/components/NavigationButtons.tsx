@@ -1,32 +1,43 @@
 import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState, RefObject } from 'react';
 
-const NavigationButtons = () => {
+interface NavigationButtonsProps {
+  titleBoxRef: RefObject<HTMLDivElement>;
+}
+
+const NavigationButtons: React.FC<NavigationButtonsProps> = ({ titleBoxRef }) => {
+  const [titleBoxBottom, setTitleBoxBottom] = useState<number>(0);
   const [isSticky, setIsSticky] = useState(false);
-  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsSticky(!entry.isIntersecting);
-      },
-      {
-        threshold: 0,
-        rootMargin: '-1px 0px 0px 0px'
-      }
-    );
-
-    const currentContainer = containerRef.current;
-    if (currentContainer) {
-      observer.observe(currentContainer);
-    }
-
-    return () => {
-      if (currentContainer) {
-        observer.unobserve(currentContainer);
+    const updateTitleBoxPosition = () => {
+      if (titleBoxRef.current) {
+        const rect = titleBoxRef.current.getBoundingClientRect();
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        setTitleBoxBottom(rect.bottom + scrollTop);
       }
     };
-  }, []);
+
+    // Update position initially and on resize
+    updateTitleBoxPosition();
+    window.addEventListener('resize', updateTitleBoxPosition);
+
+    // Check if we should be sticky based on scroll position
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      // Become sticky when we've scrolled past the title box
+      setIsSticky(scrollTop > titleBoxBottom - 100); // 100px buffer
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', updateTitleBoxPosition);
+
+    return () => {
+      window.removeEventListener('resize', updateTitleBoxPosition);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', updateTitleBoxPosition);
+    };
+  }, [titleBoxRef, titleBoxBottom]);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -77,69 +88,63 @@ const NavigationButtons = () => {
     }
   };
 
+  // Calculate position: start below title box, stick at top with margin
+  const getPosition = () => {
+    if (isSticky) {
+      return {
+        position: 'fixed' as const,
+        top: '16px', // 16px from top when sticky
+      };
+    } else {
+      return {
+        position: 'absolute' as const,
+        top: titleBoxBottom ? `${titleBoxBottom + 16}px` : 'calc(50vh + 2rem)', // Fallback position
+      };
+    }
+  };
+
+  const position = getPosition();
+
   return (
-    <>
-      {/* Spacer div for intersection observer - positioned at bottom of hero text */}
-      <div 
-        ref={containerRef} 
-        className="absolute"
-        style={{
-          top: 'calc(40 + 4rem)', // Position after hero content
-          left: 0,
-          right: 0,
-          height: '1px'
-        }}
-      />
-      
-      {/* Navigation Buttons */}
-      <div
-        className={`navigation-buttons transition-all duration-300 px-4 ${isSticky ? 'pt-4' : ''}`}
-        style={{
-          /* Position initially under hero subheader, then become sticky */
-          position: isSticky ? 'fixed' : 'absolute',
-          top: isSticky ? '0' : 'calc(30vh + 1rem)',
-          left: 0,
-          right: 0,
-          /* Ensure no transform conflicts with animations */
-          transform: 'none',
-          /* Force highest z-index to stay above all content */
-          zIndex: 999,
-          /* Ensure pointer events always work */
-          pointerEvents: 'auto',
-          /* Smooth transition between positions */
-          transition: 'all 0.3s ease-in-out'
-        }}
+    <div
+      className="navigation-buttons px-4"
+      style={{
+        ...position,
+        left: 0,
+        right: 0,
+        zIndex: 999,
+        pointerEvents: 'auto',
+        transition: 'all 0.3s ease-in-out',
+        width: '100%',
+        background: 'transparent',
+      }}
+    >
+      <motion.div
+        className="flex flex-row justify-center space-x-3 flex-wrap md:flex-nowrap max-w-4xl mx-auto"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
       >
-        <motion.div
-          className="flex flex-row justify-center space-x-3 flex-wrap md:flex-nowrap max-w-4xl mx-auto"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {buttons.map((button) => (
-            <motion.button
-              key={button.id}
-              onClick={() => scrollToSection(button.id)}
-              className="px-4 py-2.5 bg-white/80 dark:bg-black/80 backdrop-blur-sm rounded-full text-center hover:bg-white dark:hover:bg-black transition-colors duration-200 shadow-sm border border-gray-200/50 dark:border-gray-700/50"
-              variants={buttonVariants}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              style={{
-                /* Ensure buttons are not affected by parent transforms */
-                transform: 'none',
-                /* Ensure buttons are always interactive */
-                pointerEvents: 'auto',
-                /* Prevent z-index issues */
-                position: 'relative',
-                zIndex: 2
-              }}
-            >
-              <h2 className="text-base font-medium">{button.title}</h2>
-            </motion.button>
-          ))}
-        </motion.div>
-      </div>
-    </>
+        {buttons.map((button) => (
+          <motion.button
+            key={button.id}
+            onClick={() => scrollToSection(button.id)}
+            className="px-4 py-2.5 bg-white/80 dark:bg-black/80 backdrop-blur-sm rounded-full text-center hover:bg-white dark:hover:bg-black transition-colors duration-200 shadow-sm border border-gray-200/50 dark:border-gray-700/50"
+            variants={buttonVariants}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            style={{
+              transform: 'none',
+              pointerEvents: 'auto',
+              position: 'relative',
+              zIndex: 2
+            }}
+          >
+            <h2 className="text-base font-medium">{button.title}</h2>
+          </motion.button>
+        ))}
+      </motion.div>
+    </div>
   );
 };
 

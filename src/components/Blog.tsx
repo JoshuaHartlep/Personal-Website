@@ -29,10 +29,10 @@ const Blog: React.FC = () => {
 
   const renderColumn = (title: string, posts: BlogPost[]) => (
     <div className="flex flex-col h-full">
-      <h2 className="text-2xl font-bold mb-4 font-mono sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">
+      <h2 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 font-mono sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">
         {title}
       </h2>
-      <div className="flex-1 overflow-y-auto max-h-[75vh] space-y-3 pr-2 scrollbar-hide pb-6">
+      <div className="flex-1 overflow-y-auto max-h-[60vh] md:max-h-[75vh] space-y-3 pr-2 scrollbar-hide pb-6">
         {posts.map((post) => (
           <BlogCard key={post.slug} post={post} />
         ))}
@@ -54,12 +54,12 @@ const Blog: React.FC = () => {
     <div className="min-h-screen flex flex-col justify-start pt-8">
       <section id="blog" className="py-8 pb-20 relative z-10">
         <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-8 font-mono">Blogs</h1>
-          <div className="grid grid-cols-2 gap-8 h-[80vh]">
-            <div data-animate="fade-up">
+          <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 font-mono">Blogs</h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 min-h-[70vh] md:h-[80vh]">
+            <div data-animate="fade-up" className="w-full">
               {renderColumn('Tech Write-ups', writeups)}
             </div>
-            <div data-animate="fade-up">
+            <div data-animate="fade-up" className="w-full">
               {renderColumn('Personal Reflections', reflections)}
             </div>
           </div>

@@ -46,7 +46,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
   };
   
   return (
-    <div className="w-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden group relative"
+    <div className="w-full bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden group relative min-h-0 flex-shrink-0"
       style={{
         boxShadow: '4px 4px 0px rgba(0,0,0,0.2)',
         imageRendering: 'pixelated'
@@ -57,7 +57,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
           <img
             src={getThumbnailUrl(post.thumbnailUrl)}
             alt={post.title}
-            className="w-full h-[23rem] object-cover border-b-2 border-gray-300 dark:border-gray-700"
+            className="w-full h-48 sm:h-56 md:h-64 lg:h-[23rem] object-cover border-b-2 border-gray-300 dark:border-gray-700"
             style={{ 
               imageRendering: 'pixelated',
               objectPosition: getImagePosition(post.thumbnailUrl)
@@ -67,12 +67,12 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
               target.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIwIiBoZWlnaHQ9IjE5MiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZjNmNGY2Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJtb25vc3BhY2UiIGZvbnQtc2l6ZT0iMTYiIGZpbGw9IiM2YjczODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5CTE9HPC90ZXh0Pjwvc3ZnPg==';
             }}
           />
-          <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center">
-            <h3 className="text-white font-mono font-bold text-lg text-center px-4">{post.title}</h3>
+          <div className="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 flex items-center justify-center transition-opacity duration-200">
+            <h3 className="text-white font-mono font-bold text-sm md:text-lg text-center px-4">{post.title}</h3>
           </div>
         </div>
-        <div className="p-4">
-          <div className="flex items-center justify-between mb-3">
+        <div className="p-3 md:p-4">
+          <div className="flex items-center justify-between mb-2 md:mb-3">
             <span className="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 border border-red-300 dark:border-red-700 text-xs font-mono">
               {post.category}
             </span>
@@ -80,8 +80,8 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
               {post.readTime}min
             </span>
           </div>
-          <h3 className="text-lg font-bold mb-2 line-clamp-2 font-mono">{post.title}</h3>
-          <p className="text-gray-600 dark:text-gray-300 text-xs mb-3 font-mono">
+          <h3 className="text-base md:text-lg font-bold mb-2 line-clamp-2 font-mono">{post.title}</h3>
+          <p className="text-gray-600 dark:text-gray-300 text-xs mb-2 md:mb-3 font-mono">
             {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'short',
