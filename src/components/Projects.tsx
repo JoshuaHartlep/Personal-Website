@@ -1,33 +1,29 @@
 import { useState } from 'react';
 import ProjectModal from './ProjectModal';
+import koiSushi from '../assets/KoiSushi.jpeg';
+import electricalPanel from '../assets/ElectricalPanel.jpg';
 
 const projects = [
   {
     id: 'sushi-pos',
     title: 'Sushi POS System',
     description: 'A modern point-of-sale system built for sushi restaurants, featuring order management, inventory tracking, and customer analytics.',
-    technologies: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
-    imageUrl: '/sushi-pos.jpg',
-    githubUrl: 'https://github.com/username/sushi-pos',
-    demoUrl: 'https://sushi-pos-demo.com'
+    technologies: ['React', 'TypeScript', 'REST APIs', 'SQL'],
+    imageUrl: koiSushi,
+    githubUrl: 'https://github.com/JoshuaHartlep/Sushi-Point-of-Sale-Interface',
+    demoUrl: null,
+    writeUp: 'This comprehensive point-of-sale system was designed specifically for sushi restaurants to streamline operations and enhance customer experience. The application features a modern, intuitive interface built with React and TypeScript, providing real-time order management, comprehensive inventory tracking, and detailed customer analytics.\n\nThe system includes advanced features like table management, split billing, custom order modifications, and integration with payment processors. The backend utilizes REST APIs connected to a SQL database for reliable data persistence and quick retrieval. Special attention was paid to the user experience, ensuring that restaurant staff can efficiently process orders even during peak hours.\n\nOne of the key challenges was designing a flexible menu system that could accommodate the complex nature of sushi orders, including different fish types, preparation styles, and dietary restrictions. The solution includes a dynamic pricing engine and real-time inventory updates to prevent overselling of limited ingredients.'
   },
+
   {
-    id: 'fpga-game',
-    title: 'FPGA Retro Game',
-    description: 'A classic arcade-style game implemented on FPGA hardware with custom VGA controller and sound synthesis.',
-    technologies: ['FPGA', 'Verilog', 'Hardware Design'],
-    imageUrl: '/fpga-game.jpg',
-    githubUrl: 'https://github.com/username/fpga-game',
-    demoUrl: null
-  },
-  {
-    id: 'neural-network',
-    title: 'Neural Network Visualizer',
-    description: 'Interactive web application for visualizing neural network architectures and training processes in real-time.',
-    technologies: ['Python', 'TensorFlow', 'D3.js', 'Flask'],
-    imageUrl: '/neural-viz.jpg',
-    githubUrl: 'https://github.com/username/neural-viz',
-    demoUrl: 'https://neural-viz-demo.com'
+    id: 'paint-booth-panel',
+    title: 'Full Stack Paint Booth Electrical',
+    description: 'Designed and implemented industrial-grade paint booth panel for Worthington Enterprises, featuring a full stack interface for managing paint booth operations and a custom hardware interface for controlling the paint booth.',
+    technologies: ['Python', 'HTML', 'Panel Building', 'Ladder Logic'],
+    imageUrl: electricalPanel,
+    demoUrl: null,
+    demoMessage: 'Demo Confidential',
+    writeUp: 'This industrial automation project involved designing, wiring, programming, and deploying a complete control system for an automated paint booth at Worthington Enterprises.\n\nI was responsible for building the control panel, including hardware installation of emergency stops, bypass selectors, and operator buttons. I coordinated with contractors to route and land field wiring, and personally installed and tested the panel on-site to ensure proper integration with the booth hardware.\n\nThe control system logic was developed using ladder logic in RSLogix 5000, and I implemented all machine states, safety interlocks, and fault handling routines. I also programmed an HMI using FactoryTalk View (with supporting Python and HTML-based scripts where needed) to allow operators to view system status, engage bypass modes, and interact with real-time process controls.\n\nThis project gave me direct experience in industrial control design, safety compliance, and cross-functional collaboration in a real manufacturing environment. It significantly deepened my understanding of how automation, electrical design, and process safety come together in the real world.'
   }
 ];
 
@@ -54,7 +50,7 @@ const Projects = () => {
                   <img
                     src={project.imageUrl}
                     alt={project.title}
-                    className="w-full h-48 object-cover border-b-2 border-gray-300 dark:border-gray-700"
+                    className="w-full h-[19rem] object-cover border-b-2 border-gray-300 dark:border-gray-700"
                     style={{ imageRendering: 'pixelated' }}
                   />
                 )}
@@ -95,7 +91,7 @@ const Projects = () => {
                         </span>
                       </a>
                     )}
-                    {project.demoUrl && (
+                    {project.demoUrl ? (
                       <a
                         href={project.demoUrl}
                         target="_blank"
@@ -110,6 +106,10 @@ const Projects = () => {
                           Demo
                         </span>
                       </a>
+                    ) : (
+                      <div className="flex-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 text-sm font-mono text-center rounded-md">
+                        {project.demoMessage || 'Demo Not Yet Available'}
+                      </div>
                     )}
                     <button
                       onClick={() => setSelectedProject(project)}

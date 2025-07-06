@@ -8,6 +8,7 @@ interface ProjectModalProps {
     description: string;
     technologies: string[];
     imageUrl?: string;
+    writeUp?: string;
   };
 }
 
@@ -32,8 +33,12 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ isOpen, onClose, project })
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            onClick={onClose}
           >
-            <div className="relative bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div 
+              className="relative bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
               {/* Close button - Now positioned relative to modal content */}
               <button
                 onClick={onClose}
@@ -55,9 +60,19 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ isOpen, onClose, project })
                     className="w-full h-48 object-cover rounded-lg mb-6"
                   />
                 )}
-                <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  {project.description}
-                </p>
+                <div className="text-gray-600 dark:text-gray-300 mb-6">
+                  {project.writeUp ? (
+                    <div className="space-y-4">
+                      {project.writeUp.split(/\n\n+/).map((paragraph, index) => (
+                        <p key={index} className="leading-relaxed whitespace-pre-line">
+                          {paragraph.trim()}
+                        </p>
+                      ))}
+                    </div>
+                  ) : (
+                    <p>{project.description}</p>
+                  )}
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {project.technologies.map((tech) => (
                     <span
