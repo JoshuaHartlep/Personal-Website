@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import BlogCard from './BlogCard';
 import { getBlogPosts } from '../utils/blog';
 import { initFadeUpAnimations } from '../utils/scrollFadeUp';
-import DebugVisibility from './DebugVisibility';
 import type { BlogPost } from '../utils/blog';
 
 const Blog: React.FC = () => {
@@ -54,7 +53,6 @@ const Blog: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-start pt-8">
-      <DebugVisibility />
       <section id="blog" className="py-8 pb-20 relative z-10">
         <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 font-mono">Blogs</h1>
