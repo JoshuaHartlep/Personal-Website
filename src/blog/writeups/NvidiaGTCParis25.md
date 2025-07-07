@@ -24,7 +24,7 @@ The biggest shift I'm seeing is how NVIDIA is positioning AI agents. They launch
 
 We're not talking about glorified chatbots. We're talking about AI systems that can actually make decisions, take actions, and work autonomously. Companies are already seeing productivity and speed-to-market boosts of 50% or more in areas like software development and customer service. Some AI agents built for tax work are helping produce complex documents in a day that once took as long as two weeks. I've seen this hype myself, with many alum from my school going and trying to create their own AI agent startups.
 
-## Europe's Sovereign AI Play (And Why It Matters)
+## Europe's AI play
 
 This announcement about Europe building its own AI infrastructure is really about economic survival. NVIDIA will build its first artificial intelligence cloud platform for industrial applications in Germany, and they're planning to multiply Europe's AI computing capacity tenfold over the next two years by constructing 20 new "AI factories" across the continent.
 
@@ -36,7 +36,7 @@ Europe is basically saying "we're not going to let Silicon Valley and China cont
 
 Here's where things get real for people like us about to enter the job market. McKinsey research shows that 46 percent of leaders identify skill gaps in their workforces as a significant barrier to AI adoption. But at the same time, AI is expected to create 97 million new roles by 2025. Personally, I think it's going to remove many more jobs than it creates, but we'll see.
 
-The shift is already happening. Studies suggest that around 80% of U.S. workers may see LLMs affect at least 10% of their tasks, with 19% facing potential disruption to over half of their responsibilities. But here's the interesting part: 46.1% of tasks, workers currently performing them express a positive attitude toward AI agent automation, with the most cited motivation being "freeing up time for high-value work". This may be true for now, but I feel like eventually this "high-value work" is going to be way above most people's skill sets, if not all.
+The shift is already happening. Studies suggest that around 80% of U.S. workers may see LLMs affect at least 10% of their tasks, with 19% facing potential disruption to over half of their responsibilities. But here's the interesting part: "for 46.1% of tasks, workers currently performing them express a positive attitude (rating their desire above 3 on a 5-point Likert scale) toward AI agent automation, even after explicitly considering concerns such as job loss and reduced enjoyment."([Stanford SALT Lab](https://futureofwork.saltlab.stanford.edu/)). This may be true for now, but I feel like eventually this "high-value work" is going to be way above most people's skill sets, if not all.
 
 But right now, and at least for the near future, it's about humans who can work with AI vs. humans who can't.
 
@@ -46,7 +46,7 @@ NVIDIA's commitment to an [annual rhythm for AI infrastructure updates](https://
 
 This isn't random product releases. It's systematic infrastructure building for three different AI ecosystems: cloud, enterprise, and robotics. Each designed for different use cases, but all working together to create what's essentially the "operating system" for the AI age.
 
-## The Quantum Wild Card
+## + Quantum Computing?
 
 One thing that didn't get enough attention: NVIDIA's [CUDA-Q platform is now live on Denmark's Gefion supercomputer](https://blogs.nvidia.com/blog/denmark-sovereign-ai-supercomputer/), and they're pushing hard into quantum-AI hybrid systems. Huang said "Quantum computing is reaching an inflection point... We are within reach of being able to apply quantum computing, quantum classical computing, in areas that can solve some interesting problems in the coming years." I think getting into quantum computing is great, and this could really change everything I've been studying in school with traditional Computer Engineering.
 
