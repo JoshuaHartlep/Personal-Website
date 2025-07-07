@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import BlogCard from './BlogCard';
 import { getBlogPosts } from '../utils/blog';
+import { initFadeUpAnimations } from '../utils/scrollFadeUp';
+import DebugVisibility from './DebugVisibility';
 import type { BlogPost } from '../utils/blog';
 
 const Blog: React.FC = () => {
@@ -27,6 +29,19 @@ const Blog: React.FC = () => {
     loadPosts();
   }, []);
 
+  // Reinitialize animations after content loads
+  useEffect(() => {
+    if (!loading) {
+      // Small delay to ensure DOM is fully rendered
+      const timer = setTimeout(() => {
+        console.log('[Blog] Reinitializing fade-up animations after content load...');
+        initFadeUpAnimations();
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
+
   if (loading) {
     return (
       <div className="h-full flex flex-col justify-center">
@@ -39,6 +54,7 @@ const Blog: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col justify-start pt-8">
+      <DebugVisibility />
       <section id="blog" className="py-8 pb-20 relative z-10">
         <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
           <h1 className="text-3xl md:text-4xl font-bold text-center mb-6 md:mb-8 font-mono">Blogs</h1>
