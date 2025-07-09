@@ -37,9 +37,7 @@ const Home = () => {
                 transition={{ delay: title.length * 0.1 + 0.3, duration: 0.5 }}
                 className="text-xl text-gray-600 dark:text-gray-300"
               >
-                Electrical and Computer Engineering + Computer Science at Duke University
-                <br />
-                Explore my passion and journey with me
+                Future-Ready Engineer | ECE & CS @ Duke | Product + Systems Builder
               </motion.p>
             </div>
           </motion.div>
