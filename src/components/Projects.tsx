@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import ProjectModal from './ProjectModal';
+
+interface ProjectsProps {
+  isModalOpen: boolean;
+  setIsModalOpen: (open: boolean) => void;
+}
+
 import koiSushi from '../assets/KoiSushi.jpeg';
 import electricalPanel from '../assets/ElectricalPanel.jpg';
 
@@ -27,8 +33,18 @@ const projects = [
   }
 ];
 
-const Projects = () => {
+const Projects: React.FC<ProjectsProps> = ({ isModalOpen, setIsModalOpen }) => {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
+
+  const handleOpenModal = (project: typeof projects[0]) => {
+    setSelectedProject(project);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="min-h-screen flex flex-col justify-start pt-8">
@@ -112,7 +128,7 @@ const Projects = () => {
                       </div>
                     )}
                     <button
-                      onClick={() => setSelectedProject(project)}
+                      onClick={() => handleOpenModal(project)}
                       className="flex-1 px-3 py-2 bg-green-100 dark:bg-green-900 border-2 border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 text-sm font-mono text-center hover:bg-green-200 dark:hover:bg-green-800 rounded-md"
                     >
                       Info
@@ -126,8 +142,8 @@ const Projects = () => {
         </div>
 
         <ProjectModal
-          isOpen={!!selectedProject}
-          onClose={() => setSelectedProject(null)}
+          isOpen={isModalOpen}
+          onClose={handleCloseModal}
           project={selectedProject || projects[0]}
         />
       </section>
