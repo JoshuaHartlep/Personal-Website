@@ -3,10 +3,9 @@ import { useEffect, useState, RefObject } from 'react';
 
 interface NavigationButtonsProps {
   titleBoxRef: RefObject<HTMLDivElement>;
-  isModalOpen: boolean;
 }
 
-const NavigationButtons: React.FC<NavigationButtonsProps> = ({ titleBoxRef, isModalOpen }) => {
+const NavigationButtons: React.FC<NavigationButtonsProps> = ({ titleBoxRef }) => {
   const [titleBoxBottom, setTitleBoxBottom] = useState<number>(0);
   const [isSticky, setIsSticky] = useState(false);
 
@@ -129,22 +128,17 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({ titleBoxRef, isMo
         {buttons.map((button) => (
           <motion.button
             key={button.id}
-            onClick={() => !isModalOpen && scrollToSection(button.id)}
-            className={`px-4 py-2.5 backdrop-blur-sm rounded-full text-center transition-all duration-200 shadow-sm border ${
-              isModalOpen 
-                ? 'bg-white/30 dark:bg-black/30 border-gray-200/30 dark:border-gray-700/30 text-gray-400 dark:text-gray-600 cursor-not-allowed opacity-50'
-                : 'bg-white/80 dark:bg-black/80 border-gray-200/50 dark:border-gray-700/50 hover:bg-white dark:hover:bg-black'
-            }`}
+            onClick={() => scrollToSection(button.id)}
+            className="px-4 py-2.5 backdrop-blur-sm rounded-full text-center transition-all duration-200 shadow-sm border bg-white/80 dark:bg-black/80 border-gray-200/50 dark:border-gray-700/50 hover:bg-white dark:hover:bg-black"
             variants={buttonVariants}
-            whileHover={!isModalOpen ? { scale: 1.02 } : {}}
-            whileTap={!isModalOpen ? { scale: 0.98 } : {}}
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
             style={{
               transform: 'none',
-              pointerEvents: isModalOpen ? 'none' : 'auto',
+              pointerEvents: 'auto',
               position: 'relative',
               zIndex: 2
             }}
-            disabled={isModalOpen}
           >
             <h2 className="text-base font-medium">{button.title}</h2>
           </motion.button>

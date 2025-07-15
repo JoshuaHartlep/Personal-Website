@@ -1,50 +1,48 @@
-import { useState } from 'react';
-import ProjectModal from './ProjectModal';
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { getProjects } from '../utils/projects';
+import type { Project } from '../utils/projects';
+import { initFadeUpAnimations } from '../utils/scrollFadeUp';
 
-interface ProjectsProps {
-  isModalOpen: boolean;
-  setIsModalOpen: (open: boolean) => void;
-}
+const Projects: React.FC = () => {
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
-import koiSushi from '../assets/KoiSushi.jpeg';
-import electricalPanel from '../assets/ElectricalPanel.jpg';
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        const projectsData = await getProjects();
+        setProjects(projectsData);
+      } catch (error) {
+        console.error('Error loading projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-const projects = [
-  {
-    id: 'sushi-pos',
-    title: 'Sushi POS System',
-    description: 'A modern point-of-sale system built for sushi restaurants, featuring order management, inventory tracking, and customer analytics.',
-    technologies: ['React', 'TypeScript', 'REST APIs', 'SQL'],
-    imageUrl: koiSushi,
-    githubUrl: 'https://github.com/JoshuaHartlep/Sushi-Point-of-Sale-Interface',
-    demoUrl: null,
-    writeUp: 'This comprehensive point-of-sale system was designed specifically for sushi restaurants to streamline operations and enhance customer experience. The application features a modern, intuitive interface built with React and TypeScript, providing real-time order management, comprehensive inventory tracking, and detailed customer analytics.\n\nThe system includes advanced features like table management, split billing, custom order modifications, and integration with payment processors. The backend utilizes REST APIs connected to a SQL database for reliable data persistence and quick retrieval. Special attention was paid to the user experience, ensuring that restaurant staff can efficiently process orders even during peak hours.\n\nOne of the key challenges was designing a flexible menu system that could accommodate the complex nature of sushi orders, including different fish types, preparation styles, and dietary restrictions. The solution includes a dynamic pricing engine and real-time inventory updates to prevent overselling of limited ingredients.'
-  },
+    loadProjects();
+  }, []);
 
-  {
-    id: 'paint-booth-panel',
-    title: 'Full Stack Paint Booth Electrical',
-    description: 'Designed and implemented industrial-grade paint booth panel for Worthington Enterprises, featuring a full stack interface for managing paint booth operations and a custom hardware interface for controlling the paint booth.',
-    technologies: ['Python', 'HTML', 'Panel Building', 'Ladder Logic'],
-    imageUrl: electricalPanel,
-    demoUrl: null,
-    demoMessage: 'Demo Confidential',
-    writeUp: 'This industrial automation project involved designing, wiring, programming, and deploying a complete control system for an automated paint booth at Worthington Enterprises.\n\nI was responsible for building the control panel, including hardware installation of emergency stops, bypass selectors, and operator buttons. I coordinated with contractors to route and land field wiring, and personally installed and tested the panel on-site to ensure proper integration with the booth hardware.\n\nThe control system logic was developed using ladder logic in RSLogix 5000, and I implemented all machine states, safety interlocks, and fault handling routines. I also programmed an HMI using FactoryTalk View (with supporting Python and HTML-based scripts where needed) to allow operators to view system status, engage bypass modes, and interact with real-time process controls.\n\nThis project gave me direct experience in industrial control design, safety compliance, and cross-functional collaboration in a real manufacturing environment. It significantly deepened my understanding of how automation, electrical design, and process safety come together in the real world.'
+  // Reinitialize animations after content loads
+  useEffect(() => {
+    if (!loading) {
+      const timer = setTimeout(() => {
+        initFadeUpAnimations();
+      }, 100);
+
+      return () => clearTimeout(timer);
+    }
+  }, [loading]);
+
+  if (loading) {
+    return (
+      <div className="h-full flex flex-col justify-center">
+        <div className="flex items-center justify-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
+      </div>
+    );
   }
-];
-
-const Projects: React.FC<ProjectsProps> = ({ isModalOpen, setIsModalOpen }) => {
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-
-  const handleOpenModal = (project: typeof projects[0]) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedProject(null);
-    setIsModalOpen(false);
-  };
 
   return (
     <div className="min-h-screen flex flex-col justify-start pt-8">
@@ -55,16 +53,16 @@ const Projects: React.FC<ProjectsProps> = ({ isModalOpen, setIsModalOpen }) => {
             <div data-animate="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {projects.map((project) => (
               <div
-                key={project.id}
+                key={project.slug}
                 className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden"
                 style={{
                   boxShadow: '4px 4px 0px rgba(0,0,0,0.2)',
                   imageRendering: 'pixelated'
                 }}
               >
-                {project.imageUrl && (
+                {project.thumbnailUrl && (
                   <img
-                    src={project.imageUrl}
+                    src={`/src/assets/${project.thumbnailUrl}`}
                     alt={project.title}
                     className="w-full h-[19rem] object-cover border-b-2 border-gray-300 dark:border-gray-700"
                     style={{ imageRendering: 'pixelated' }}
@@ -127,12 +125,12 @@ const Projects: React.FC<ProjectsProps> = ({ isModalOpen, setIsModalOpen }) => {
                         {project.demoMessage || 'Demo Not Yet Available'}
                       </div>
                     )}
-                    <button
-                      onClick={() => handleOpenModal(project)}
+                    <Link
+                      to={`/projects/${project.slug}`}
                       className="flex-1 px-3 py-2 bg-green-100 dark:bg-green-900 border-2 border-green-300 dark:border-green-700 text-green-800 dark:text-green-200 text-sm font-mono text-center hover:bg-green-200 dark:hover:bg-green-800 rounded-md"
                     >
                       Info
-                    </button>
+                    </Link>
                   </div>
                 </div>
                 </div>
@@ -140,15 +138,9 @@ const Projects: React.FC<ProjectsProps> = ({ isModalOpen, setIsModalOpen }) => {
             </div>
           </div>
         </div>
-
-        <ProjectModal
-          isOpen={isModalOpen}
-          onClose={handleCloseModal}
-          project={selectedProject || projects[0]}
-        />
       </section>
     </div>
   );
 };
 
-export default Projects; 
+export default Projects;

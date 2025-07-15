@@ -141,6 +141,29 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;  /* Safari and Chrome */
   }
+
+  /* Project post image styles */
+  .drawings-container {
+    @apply my-8 flex justify-center;
+  }
+
+  .drawing-pair {
+    @apply flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center max-w-4xl;
+  }
+
+  .drawing-img {
+    @apply max-w-full h-auto rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm;
+    /* On mobile: full width, on desktop: half width with some margin */
+    width: 100%;
+    max-width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    .drawing-img {
+      width: 45%;
+      max-width: 45%;
+    }
+  }
 }
 
 /* Exclude navigation buttons and theme dropdown from scroll animations */

@@ -1,9 +1,10 @@
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import Home from './components/Home';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
+import ProjectPost from './components/ProjectPost';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import FloatingLogo from './components/FloatingLogo';
@@ -25,11 +26,9 @@ import contactDark from './assets/contact_dark.png';
 // Component to reinitialize fade-up animations when home page loads
 interface HomePageWrapperProps {
   titleBoxRef: React.RefObject<HTMLDivElement>;
-  isModalOpen: boolean;
-  setIsModalOpen: (open: boolean) => void;
 }
 
-const HomePageWrapper: React.FC<HomePageWrapperProps> = ({ titleBoxRef, isModalOpen, setIsModalOpen }) => {
+const HomePageWrapper: React.FC<HomePageWrapperProps> = ({ titleBoxRef }) => {
   useEffect(() => {
     // Reinitialize fade-up animations when home page loads
     const timer = setTimeout(() => {
@@ -79,7 +78,7 @@ const HomePageWrapper: React.FC<HomePageWrapperProps> = ({ titleBoxRef, isModalO
         sectionId="projects"
         backgroundSize="cover"
       >
-        <Projects isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <Projects />
       </ParallaxBackground>
 
       {/* Contact Section with Parallax Background */}
@@ -100,7 +99,6 @@ const HomePageWrapper: React.FC<HomePageWrapperProps> = ({ titleBoxRef, isModalO
 const App: React.FC = () => {
   const location = useLocation();
   const titleBoxRef = useRef<HTMLDivElement>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   
   // Only show navigation buttons on the homepage
   const showNavigationButtons = location.pathname === '/';
@@ -111,14 +109,15 @@ const App: React.FC = () => {
       <ThemeDropdown />
 
       {/* Navigation Buttons - Only shown on homepage */}
-      {showNavigationButtons && <NavigationButtons titleBoxRef={titleBoxRef} isModalOpen={isModalOpen} />}
+      {showNavigationButtons && <NavigationButtons titleBoxRef={titleBoxRef} />}
 
       {/* Floating Logo/Icon */}
       <FloatingLogo />
 
       <Routes>
         <Route path="/blog/:slug" element={<BlogPost />} />
-        <Route path="/" element={<HomePageWrapper titleBoxRef={titleBoxRef} isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />} />
+        <Route path="/projects/:slug" element={<ProjectPost />} />
+        <Route path="/" element={<HomePageWrapper titleBoxRef={titleBoxRef} />} />
       </Routes>
     </div>
   );
