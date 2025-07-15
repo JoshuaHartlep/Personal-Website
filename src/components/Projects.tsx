@@ -4,6 +4,18 @@ import { getProjects } from '../utils/projects';
 import type { Project } from '../utils/projects';
 import { initFadeUpAnimations } from '../utils/scrollFadeUp';
 
+// Import project assets
+import koiSushi from '../assets/KoiSushi.jpeg';
+import electricalPanel from '../assets/ElectricalPanel.jpg';
+import groupPicture from '../assets/projects/Stool-Sampler/GroupPicture.png';
+
+// Asset mapping for project thumbnails
+const thumbnailMap: Record<string, string> = {
+  'KoiSushi.jpeg': koiSushi,
+  'ElectricalPanel.jpg': electricalPanel,
+  'projects/Stool-Sampler/GroupPicture.png': groupPicture,
+};
+
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -62,7 +74,7 @@ const Projects: React.FC = () => {
               >
                 {project.thumbnailUrl && (
                   <img
-                    src={`/src/assets/${project.thumbnailUrl}`}
+                    src={thumbnailMap[project.thumbnailUrl] || `/src/assets/${project.thumbnailUrl}`}
                     alt={project.title}
                     className="w-full h-[19rem] object-cover border-b-2 border-gray-300 dark:border-gray-700"
                     style={{ imageRendering: 'pixelated' }}

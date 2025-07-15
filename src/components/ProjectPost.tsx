@@ -5,14 +5,46 @@ import ReactMarkdown from 'react-markdown';
 import { getProject } from '../utils/projects';
 import type { Project } from '../utils/projects';
 
+// Import all project assets
+import koiSushi from '../assets/KoiSushi.jpeg';
+import electricalPanel from '../assets/ElectricalPanel.jpg';
+import groupPicture from '../assets/projects/Stool-Sampler/GroupPicture.png';
+import lowFidelity from '../assets/projects/Stool-Sampler/LowFidelity.png';
+import final3dModel from '../assets/projects/Stool-Sampler/Final3dModel.png';
+import fullTube from '../assets/projects/Stool-Sampler/FullTube.png';
+import pusherDrawing2D from '../assets/projects/Stool-Sampler/PusherDrawing2D.png';
+import scooperDrawing2D from '../assets/projects/Stool-Sampler/ScooperDrawing2D.png';
+import lockingMechanism from '../assets/projects/Stool-Sampler/LockingMechanism.png';
+
+// Asset mapping for dynamic loading
+const assetMap: Record<string, string> = {
+  'KoiSushi.jpeg': koiSushi,
+  'ElectricalPanel.jpg': electricalPanel,
+  'projects/Stool-Sampler/GroupPicture.png': groupPicture,
+  'projects/Stool-Sampler/LowFidelity.png': lowFidelity,
+  'projects/Stool-Sampler/Final3dModel.png': final3dModel,
+  'projects/Stool-Sampler/FullTube.png': fullTube,
+  'projects/Stool-Sampler/PusherDrawing2D.png': pusherDrawing2D,
+  'projects/Stool-Sampler/ScooperDrawing2D.png': scooperDrawing2D,
+  'projects/Stool-Sampler/LockingMechanism.png': lockingMechanism,
+};
+
 // Custom image component for markdown rendering
 const MarkdownImage = ({ src, alt, ...props }: { src?: string; alt?: string; [key: string]: any }) => {
   if (!src || !alt) return null;
   
+  // Convert /src/assets/... paths to asset map keys
+  let assetKey = src;
+  if (src.startsWith('/src/assets/')) {
+    assetKey = src.replace('/src/assets/', '');
+  }
+  
+  const actualSrc = assetMap[assetKey] || src;
+  
   return (
     <div className="flex justify-center my-8">
       <img
-        src={src}
+        src={actualSrc}
         alt={alt}
         className="max-w-[70%] h-auto rounded-lg border border-gray-300 dark:border-gray-600 shadow-sm"
         {...props}
@@ -26,14 +58,24 @@ const DrawingPair = ({ images }: { images: { src: string; alt: string }[] }) => 
   return (
     <div className="drawings-container">
       <div className="drawing-pair">
-        {images.map((img, index) => (
-          <img
-            key={index}
-            src={img.src}
-            alt={img.alt}
-            className="drawing-img"
-          />
-        ))}
+        {images.map((img, index) => {
+          // Convert /src/assets/... paths to asset map keys
+          let assetKey = img.src;
+          if (img.src.startsWith('/src/assets/')) {
+            assetKey = img.src.replace('/src/assets/', '');
+          }
+          
+          const actualSrc = assetMap[assetKey] || img.src;
+          
+          return (
+            <img
+              key={index}
+              src={actualSrc}
+              alt={img.alt}
+              className="drawing-img"
+            />
+          );
+        })}
       </div>
     </div>
   );
@@ -164,7 +206,7 @@ const ProjectPost: React.FC = () => {
         <header className="mb-12">
           {project.thumbnailUrl && (
             <img
-              src={`/src/assets/${project.thumbnailUrl}`}
+              src={assetMap[project.thumbnailUrl] || `/src/assets/${project.thumbnailUrl}`}
               alt={project.title}
               className="w-full h-72 object-cover object-[center_25%] rounded-lg mb-8 border-2 border-gray-300 dark:border-gray-700"
               style={{ imageRendering: 'pixelated' }}
