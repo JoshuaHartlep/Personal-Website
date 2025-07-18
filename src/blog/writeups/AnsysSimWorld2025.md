@@ -1,7 +1,7 @@
 ```markdown
 ---
 title: "What I Learned at Ansys Simulation World 2025"
-date: "2025-07-18"
+date: "2025-07-17"
 category: "conferences"
 tags: ["ansys", "simulation", "AI", "engineering", "conference"]
 thumbnail: "AnsysSimulationWorldThumbnail.jpg"
