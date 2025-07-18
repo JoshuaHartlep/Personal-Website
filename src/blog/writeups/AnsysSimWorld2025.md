@@ -3,7 +3,7 @@ title: "What I Learned at Ansys Simulation World 2025"
 date: "2025-07-19"
 category: "conferences"
 tags: ["ansys", "simulation", "AI", "engineering", "conference"]
-thumbnail: "AnsysSimulationWorldThumbnail.jpg"
+thumbnail: "src/assets/AnsysSimulationWorldThumbnail.jpg"
 ---
 
 # What I Learned at Ansys Simulation World 2025
@@ -23,14 +23,14 @@ I was only able to attend **Day 2** (July 17) of Ansys Simulation World 2025�
 
 ## Pillars of Simulation: Where Ansys Is Headed
 
-During the day, Ansys highlighted ([key industries](https://www.ansys.com/industries/)) being reshaped by simulation, including some that stood out to me:
+During the day, Ansys highlighted [key industries](https://www.ansys.com/industries/) being reshaped by simulation, including some that stood out to me:
 
-- ([Healthcare](https://www.ansys.com/industries/healthcare))  
-- ([High-tech & electronics](https://www.ansys.com/industries/high-tech))  
-- ([Industrial equipment](https://www.ansys.com/industries/industrial-equipment))  
-- ([Automotive & transportation](https://www.ansys.com/industries/transportation-and-mobility))  
-- ([Energy](https://www.ansys.com/industries/energy))  
-- ([Aerospace](https://www.ansys.com/industries/aerospace)) and ([Defense](https://www.ansys.com/industries/defense))
+- [Healthcare](https://www.ansys.com/industries/healthcare)  
+- [High-tech & electronics](https://www.ansys.com/industries/high-tech)  
+- [Industrial equipment](https://www.ansys.com/industries/industrial-equipment)  
+- [Automotive & transportation](https://www.ansys.com/industries/transportation-and-mobility)  
+- [Energy](https://www.ansys.com/industries/energy)  
+- [Aerospace](https://www.ansys.com/industries/aerospace) and [Defense](https://www.ansys.com/industries/defense)
 
 These align with what I hope to impact in my career, and it was inspiring to see how simulation is central to their development.
 
@@ -44,7 +44,7 @@ This session, led by **Simon Floyd** (Microsoft), was a highlight. It dove into:
 - **Digital twins** integrated with AI for discovery  
 - **AI-driven robots & quantum potential**  
 - **Microsoft AI Foundry**: agents that interact with simulation data  
-- **Ansys + Microsoft via Azure** powering on-demand innovation ([Ansys](https://www.ansys.com/blog/simulation-world-2025-learn-from-leaders), [Ansys](https://www.ansys.com/blog/ansys-nvidia-gtc-2025), [Ansys](https://www.ansys.com/events/sw-texas-2025))
+- **Ansys + Microsoft via Azure** powering on-demand innovation ([Ansys](https://www.ansys.com/products/cloud/ansys-access))
 
 It was a front-row seat to how AI is no longer an adjunct—it’s embedded in simulation workflows.
 
@@ -91,5 +91,5 @@ Even though I missed the first day, Day 2 was full of insight, live interactio
 ---
 
 I’ll keep digging into the recordings, and bring everything I learned back to the internship and my professional life.
-```
+
 
