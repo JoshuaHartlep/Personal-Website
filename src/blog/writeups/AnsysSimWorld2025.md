@@ -16,21 +16,21 @@ I was only able to attend **Day 2** (July 17) of Ansys Simulation World 2025�
 
 ## What I’m Rewatching
 
-- **Jensen Huang (NVIDIA)** on the journey of accelerated computing and a new industrial revolution—how AI is transforming the entire simulation stack and partnering with Ansys to reinvent engineering ([Ansys](https://www.ansys.com/blog/simulation-world-2025-learn-from-leaders?utm_source=chatgpt.com)).  
+- **Jensen Huang (NVIDIA)** on the journey of accelerated computing and a new industrial revolution—how AI is transforming the entire simulation stack and partnering with Ansys to reinvent engineering ([Ansys](https://www.ansys.com/blog/simulation-world-2025-learn-from-leaders)).  
 - **“Advancing Circuit Breaker Design”** by Sadashiv Pimple, Rockwell Automation—relevant to my industrial automation internship and really worth diving into.
 
 ---
 
 ## Pillars of Simulation: Where Ansys Is Headed
 
-During the day, Ansys highlighted key industries being reshaped by simulation:
+During the day, Ansys highlighted ([key industries](https://www.ansys.com/industries/)) being reshaped by simulation, including some that stood out to me:
 
 - ([Healthcare](https://www.ansys.com/industries/healthcare))  
-- High-tech & electronics  
-- Industrial equipment  
-- Automotive & transportation  
-- Energy  
-- Aerospace & defense ([Ansys](https://www.ansys.com/blog/simulation-world-2025-learn-from-leaders?utm_source=chatgpt.com))
+- ([High-tech & electronics](https://www.ansys.com/industries/high-tech))  
+- ([Industrial equipment](https://www.ansys.com/industries/industrial-equipment))  
+- ([Automotive & transportation](https://www.ansys.com/industries/transportation-and-mobility))  
+- ([Energy](https://www.ansys.com/industries/energy))  
+- ([Aerospace](https://www.ansys.com/industries/aerospace)) and ([Defense](https://www.ansys.com/industries/defense))
 
 These align with what I hope to impact in my career, and it was inspiring to see how simulation is central to their development.
 
@@ -44,7 +44,7 @@ This session, led by **Simon Floyd** (Microsoft), was a highlight. It dove into:
 - **Digital twins** integrated with AI for discovery  
 - **AI-driven robots & quantum potential**  
 - **Microsoft AI Foundry**: agents that interact with simulation data  
-- **Ansys + Microsoft via Azure** powering on-demand innovation ([Ansys](https://www.ansys.com/blog/simulation-world-2025-learn-from-leaders?utm_source=chatgpt.com), [Ansys](https://www.ansys.com/blog/ansys-nvidia-gtc-2025?utm_source=chatgpt.com), [Ansys](https://www.ansys.com/events/sw-texas-2025?utm_source=chatgpt.com))
+- **Ansys + Microsoft via Azure** powering on-demand innovation ([Ansys](https://www.ansys.com/blog/simulation-world-2025-learn-from-leaders), [Ansys](https://www.ansys.com/blog/ansys-nvidia-gtc-2025), [Ansys](https://www.ansys.com/events/sw-texas-2025))
 
 It was a front-row seat to how AI is no longer an adjunct—it’s embedded in simulation workflows.
 
@@ -57,7 +57,7 @@ He showcased:
 
 - The push for high‑fidelity, GPU-accelerated CFD in automotive  
 - Fluent benchmarks on Grace/Blackwell GPUs  
-- Case studies with Volvo ([NVIDIA Newsroom](https://nvidianews.nvidia.com/news/nvidia-builds-worlds-first-industrial-ai-cloud-to-advance-european-manufacturing?utm_source=chatgpt.com), [Ansys](https://www.ansys.com/blog/new-era-ansys-fluent-computations?utm_source=chatgpt.com), [SemiWiki](https://semiwiki.com/eda/ansys-inc/343263-unleash-the-power-nvidia-gpus-ansys-simulation/?utm_source=chatgpt.com))  
+- Case studies with Volvo ([NVIDIA Newsroom](https://nvidianews.nvidia.com/news/nvidia-builds-worlds-first-industrial-ai-cloud-to-advance-european-manufacturing), [Ansys](https://www.ansys.com/blog/new-era-ansys-fluent-computations), [SemiWiki](https://semiwiki.com/eda/ansys-inc/343263-unleash-the-power-nvidia-gpus-ansys-simulation/))  
 
 Seeing how simulation time drops dramatically with GPU support makes me think differently about what real‑time design iteration could look like.
 
@@ -90,6 +90,6 @@ Even though I missed the first day, Day 2 was full of insight, live interactio
 
 ---
 
-Let me know if you want to incorporate screenshots or session links. I’ll keep digging into the recordings—and bring everything I learned back to the internship.
+Let me know if you want to incorporate screenshots or session links. I’ll keep digging into the recordings, and bring everything I learned back to the internship and my professional life.
 ```
 
