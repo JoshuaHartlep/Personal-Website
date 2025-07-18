@@ -1,6 +1,6 @@
 ---
 title: "What I Learned at Ansys Simulation World 2025"
-date: "2025-07-17"
+date: "2025-07-19"
 category: "conferences"
 tags: ["ansys", "simulation", "AI", "engineering", "conference"]
 thumbnail: "AnsysSimulationWorldThumbnail.jpg"
