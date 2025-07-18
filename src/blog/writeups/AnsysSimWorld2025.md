@@ -1,4 +1,3 @@
-```markdown
 ---
 title: "What I Learned at Ansys Simulation World 2025"
 date: "2025-07-17"
@@ -91,6 +90,6 @@ Even though I missed the first day, Day 2 was full of insight, live interactio
 
 ---
 
-Let me know if you want to incorporate screenshots or session links. I’ll keep digging into the recordings, and bring everything I learned back to the internship and my professional life.
+I’ll keep digging into the recordings, and bring everything I learned back to the internship and my professional life.
 ```
 
