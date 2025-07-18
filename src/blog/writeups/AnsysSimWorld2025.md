@@ -14,7 +14,7 @@ I was only able to attend **Day 2** (July 17) of Ansys Simulation World 2025�
 
 ---
 
-## 🎥 What I’m Rewatching
+## What I’m Rewatching
 
 - **Jensen Huang (NVIDIA)** on the journey of accelerated computing and a new industrial revolution—how AI is transforming the entire simulation stack and partnering with Ansys to reinvent engineering ([Ansys](https://www.ansys.com/blog/simulation-world-2025-learn-from-leaders?utm_source=chatgpt.com)).  
 - **“Advancing Circuit Breaker Design”** by Sadashiv Pimple, Rockwell Automation—relevant to my industrial automation internship and really worth diving into.
@@ -25,7 +25,7 @@ I was only able to attend **Day 2** (July 17) of Ansys Simulation World 2025�
 
 During the day, Ansys highlighted key industries being reshaped by simulation:
 
-- Healthcare  
+- ([Healthcare](https://www.ansys.com/industries/healthcare))  
 - High-tech & electronics  
 - Industrial equipment  
 - Automotive & transportation  
@@ -36,7 +36,7 @@ These align with what I hope to impact in my career, and it was inspiring to see
 
 ---
 
-## 🔥 Favorite Talk: The Power of AI to Transform Product‑Driven Industries
+## Favorite Talk: The Power of AI to Transform Product‑Driven Industries
 
 This session, led by **Simon Floyd** (Microsoft), was a highlight. It dove into:
 
@@ -76,7 +76,7 @@ Seeing how simulation time drops dramatically with GPU support makes me think di
 
 ---
 
-## 🔑 What I’m Taking With Me
+## What I’m Taking With Me
 
 - **Rewatch Day 1 recordings** to fill in gaps and catch more keynotes  
 - Explore more on **AI copilots + simulation**—this is where future productivity lies  
