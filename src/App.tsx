@@ -7,6 +7,8 @@ import BlogPost from './components/BlogPost';
 import ProjectPost from './components/ProjectPost';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
+import Photography from './components/Photography';
+import PhotographyPortfolio from './components/PhotographyPortfolio';
 import FloatingLogo from './components/FloatingLogo';
 import ThemeDropdown from './components/ThemeDropdown';
 import NavigationButtons from './components/NavigationButtons';
@@ -22,6 +24,8 @@ import projectsLight from './assets/projects_light.png';
 import projectsDark from './assets/projects_dark.png';
 import contactLight from './assets/contact_light.png';
 import contactDark from './assets/contact_dark.png';
+import photographyLight from './assets/hero_light.png'; // Reusing hero image temporarily
+import photographyDark from './assets/hero_dark.png'; // Reusing hero image temporarily
 
 // Component to reinitialize fade-up animations when home page loads
 interface HomePageWrapperProps {
@@ -81,6 +85,18 @@ const HomePageWrapper: React.FC<HomePageWrapperProps> = ({ titleBoxRef }) => {
         <Projects />
       </ParallaxBackground>
 
+      {/* Photography Portfolio Section with Parallax Background */}
+      <ParallaxBackground
+        lightImage={photographyLight}
+        darkImage={photographyDark}
+        parallaxSpeed={0.08}
+        className="h-screen"
+        sectionId="photography"
+        backgroundSize="cover"
+      >
+        <PhotographyPortfolio />
+      </ParallaxBackground>
+
       {/* Contact Section with Parallax Background */}
       <ParallaxBackground
         lightImage={contactLight}
@@ -117,6 +133,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/projects/:slug" element={<ProjectPost />} />
+        <Route path="/photography" element={<Photography />} />
         <Route path="/" element={<HomePageWrapper titleBoxRef={titleBoxRef} />} />
       </Routes>
     </div>

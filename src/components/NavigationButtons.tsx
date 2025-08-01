@@ -58,6 +58,11 @@ const NavigationButtons: React.FC<NavigationButtonsProps> = ({ titleBoxRef }) =>
       description: 'Selected work and side projects'
     },
     {
+      id: 'photography',
+      title: 'Photography',
+      description: 'Visual portfolio'
+    },
+    {
       id: 'contact',
       title: 'Contact Me',
       description: 'Get in touch'
