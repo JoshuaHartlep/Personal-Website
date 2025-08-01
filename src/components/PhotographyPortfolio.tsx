@@ -12,7 +12,7 @@ const PhotographyPortfolio: React.FC = () => {
     <div className="h-full flex flex-col justify-center">
       <section id="photography" className="py-24 flex flex-col items-center justify-center relative z-10">
         <div data-animate="fade-up" className="max-w-2xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12 font-mono">Photography Portfolio</h2>
+          <h2 className="text-4xl font-bold text-center mb-12 font-mono">Photography Portfolio!</h2>
           
           <motion.div
             onClick={handleClick}

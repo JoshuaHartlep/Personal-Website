@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { getProjects } from '../utils/projects';
 import type { Project } from '../utils/projects';
@@ -16,9 +16,26 @@ const thumbnailMap: Record<string, string> = {
   'projects/Stool-Sampler/GroupPicture.png': groupPicture,
 };
 
+// Helper function to highlight matching text
+const highlightText = (text: string, searchTerm: string) => {
+  if (!searchTerm.trim()) return text;
+  
+  const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  const parts = text.split(regex);
+  
+  return parts.map((part, index) => 
+    regex.test(part) ? (
+      <span key={index} className="bg-yellow-200 dark:bg-yellow-800 text-yellow-900 dark:text-yellow-100 px-1 rounded">
+        {part}
+      </span>
+    ) : part
+  );
+};
+
 const Projects: React.FC = () => {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
     const loadProjects = async () => {
@@ -46,6 +63,17 @@ const Projects: React.FC = () => {
     }
   }, [loading]);
 
+  // Filter projects based on search term
+  const filteredProjects = useMemo(() => {
+    if (!searchTerm.trim()) return projects;
+    const term = searchTerm.toLowerCase();
+    return projects.filter(project => 
+      project.title.toLowerCase().includes(term) ||
+      project.description.toLowerCase().includes(term) ||
+      project.technologies.some(tech => tech.toLowerCase().includes(term))
+    );
+  }, [projects, searchTerm]);
+
   if (loading) {
     return (
       <div className="h-full flex flex-col justify-center">
@@ -60,10 +88,32 @@ const Projects: React.FC = () => {
     <div className="min-h-screen flex flex-col justify-start pt-8">
       <section id="projects" className="py-8 pb-20 relative z-10">
         <div data-animate="fade-up" className="max-w-7xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-8 font-mono">Projects</h2>
+          <div className="flex flex-col md:flex-row items-center justify-between mb-8 gap-4">
+            <h2 className="text-4xl font-bold font-mono">Projects</h2>
+            <div className="relative">
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="px-4 py-2 pl-10 bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 focus:border-blue-500 dark:focus:border-blue-400 outline-none transition-colors font-mono text-sm w-64"
+                style={{
+                  boxShadow: '2px 2px 0px rgba(0,0,0,0.2)',
+                }}
+              />
+              <svg
+                className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
           <div className="h-[80vh] overflow-y-auto scrollbar-hide pb-12">
             <div data-animate="fade-up" className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {projects.map((project) => (
+              {filteredProjects.map((project) => (
               <div
                 key={project.slug}
                 className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 shadow-lg overflow-hidden"
@@ -81,9 +131,9 @@ const Projects: React.FC = () => {
                   />
                 )}
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2 font-mono">{project.title}</h3>
+                  <h3 className="text-xl font-bold mb-2 font-mono">{highlightText(project.title, searchTerm)}</h3>
                   <p className="text-gray-600 dark:text-gray-300 mb-4 text-sm font-mono line-clamp-2">
-                    {project.description}
+                    {highlightText(project.description, searchTerm)}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, 3).map((tech) => (
@@ -91,7 +141,7 @@ const Projects: React.FC = () => {
                         key={tech}
                         className="px-2 py-1 bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-100 border border-red-300 dark:border-red-700 text-sm font-mono"
                       >
-                        {tech}
+                        {highlightText(tech, searchTerm)}
                       </span>
                     ))}
                     {project.technologies.length > 3 && (

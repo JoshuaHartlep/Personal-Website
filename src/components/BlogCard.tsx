@@ -11,9 +11,26 @@ import AnsysSimulationWorldThumbnail from '../assets/AnsysSimulationWorldThumbna
 
 interface BlogCardProps {
   post: BlogPost;
+  searchTerm?: string;
 }
 
-const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
+// Helper function to highlight matching text
+const highlightText = (text: string, searchTerm: string) => {
+  if (!searchTerm.trim()) return text;
+  
+  const regex = new RegExp(`(${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
+  const parts = text.split(regex);
+  
+  return parts.map((part, index) => 
+    regex.test(part) ? (
+      <span key={index} className="bg-yellow-200 dark:bg-yellow-800 text-yellow-900 dark:text-yellow-100 px-1 rounded">
+        {part}
+      </span>
+    ) : part
+  );
+};
+
+const BlogCard: React.FC<BlogCardProps> = ({ post, searchTerm = '' }) => {
   const defaultThumbnail = post.category === 'writeups' ? '/default-writeup.png' : '/default-reflection.png';
   
   // Image mapping object - add new images here
@@ -82,7 +99,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
               {post.readTime}min
             </span>
           </div>
-          <h3 className="text-base md:text-lg font-bold mb-2 line-clamp-2 font-mono">{post.title}</h3>
+          <h3 className="text-base md:text-lg font-bold mb-2 line-clamp-2 font-mono">{highlightText(post.title, searchTerm)}</h3>
           <p className="text-gray-600 dark:text-gray-300 text-xs mb-2 md:mb-3 font-mono">
             {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -96,7 +113,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post }) => {
                 key={tag}
                 className="px-2 py-1 bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 border border-gray-300 dark:border-gray-600 text-xs font-mono"
               >
-                {tag}
+                {highlightText(tag, searchTerm)}
               </span>
             ))}
             {post.tags.length > 3 && (

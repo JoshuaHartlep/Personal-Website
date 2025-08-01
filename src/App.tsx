@@ -24,8 +24,8 @@ import projectsLight from './assets/projects_light.png';
 import projectsDark from './assets/projects_dark.png';
 import contactLight from './assets/contact_light.png';
 import contactDark from './assets/contact_dark.png';
-import photographyLight from './assets/hero_light.png'; // Reusing hero image temporarily
-import photographyDark from './assets/hero_dark.png'; // Reusing hero image temporarily
+import photographyLight from './assets/photography_light.png';
+import photographyDark from './assets/photography_dark.png';
 
 // Component to reinitialize fade-up animations when home page loads
 interface HomePageWrapperProps {
@@ -58,7 +58,7 @@ const HomePageWrapper: React.FC<HomePageWrapperProps> = ({ titleBoxRef }) => {
         sectionId="hero"
         backgroundSize="cover"
       >
-        <Home ref={titleBoxRef} />
+        <Home />
       </ParallaxBackground>
 
       {/* Blog Section with Parallax Background */}
