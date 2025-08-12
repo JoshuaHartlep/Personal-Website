@@ -8,12 +8,14 @@ import { initFadeUpAnimations } from '../utils/scrollFadeUp';
 import koiSushi from '../assets/KoiSushi.jpeg';
 import electricalPanel from '../assets/ElectricalPanel.jpg';
 import groupPicture from '../assets/projects/Stool-Sampler/GroupPicture.png';
+import gymMonster from '../assets/GymMonsterThumbnail.png';
 
 // Asset mapping for project thumbnails
 const thumbnailMap: Record<string, string> = {
   'KoiSushi.jpeg': koiSushi,
   'ElectricalPanel.jpg': electricalPanel,
   'projects/Stool-Sampler/GroupPicture.png': groupPicture,
+  'GymMonsterThumbnail.png': gymMonster,
 };
 
 // Helper function to highlight matching text
@@ -184,8 +186,24 @@ const Projects: React.FC = () => {
                       </a>
                     ) : (
                       <div className="flex-1 px-3 py-2 bg-gray-100 dark:bg-gray-700 border-2 border-gray-300 dark:border-gray-600 text-gray-500 dark:text-gray-400 text-sm font-mono text-center rounded-md">
-                        {project.demoMessage || 'Demo Not Yet Available'}
+                        {project.demoMessage || 'Demo Vid Not Available'}
                       </div>
+                    )}
+                    {project.projectUrl && (
+                      <a
+                        href={project.projectUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 px-3 py-2 bg-purple-100 dark:bg-purple-900 border-2 border-purple-300 dark:border-purple-700 text-purple-800 dark:text-purple-200 text-sm font-mono text-center hover:bg-purple-200 dark:hover:bg-purple-800 rounded-md"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <span className="flex items-center justify-center gap-1">
+                          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9v-9m0 9c-1.657 0-3-4.03-3-9s1.343-9 3-9m0 18c1.657 0 3-4.03 3-9s-1.343-9-3-9m-9 9a9 9 0 019-9"/>
+                          </svg>
+                          URL
+                        </span>
+                      </a>
                     )}
                     <Link
                       to={`/projects/${project.slug}`}

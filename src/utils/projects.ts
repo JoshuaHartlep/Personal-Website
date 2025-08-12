@@ -16,6 +16,7 @@ export interface Project {
   githubUrl?: string;
   demoUrl?: string;
   demoMessage?: string;
+  projectUrl?: string;
 }
 
 // Use Vite's import.meta.glob to load all markdown files
@@ -47,6 +48,7 @@ export const getProjects = async (): Promise<Project[]> => {
       githubUrl: data.githubUrl,
       demoUrl: data.demoUrl,
       demoMessage: data.demoMessage,
+      projectUrl: data.projectUrl,
     });
   }
 
