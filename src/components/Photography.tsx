@@ -11,15 +11,40 @@ interface PhotoData {
 
 // Manual photo tagging map - add your photos and tags here
 const PHOTO_TAGS: Record<string, string[]> = {
-  // Example entries - replace these with your actual photo names and desired tags
+  // Sports photos
   '20250303_MBBvsWakeForest_JoshuaHartlep-5': ['basketball', 'sports', 'Duke', 'Wake Forest'],
   '20250119_WBBvsStanford_JoshuaHartlep-16': ['basketball', 'sports', 'Duke', 'Stanford', 'women'],
   '20250209_WBBvsMiami_JoshuaHartlep-12': ['basketball', 'sports', 'Duke', 'Miami', 'women'],
   '20241024_WSOCvsND_JoshuaHartlep-17': ['soccer', 'sports', 'Duke', 'Notre Dame', 'women'],
   '20240929_FHvsSyracuse_JoshuaHartlep-16': ['field hockey', 'sports', 'Duke', 'Syracuse', 'women'],
+  'FlaggDunk-2': ['Cooper Flagg', 'Basketball', 'Dunk'],
+  'FlaggDunk-1': ['Cooper Flagg', 'Basketball', 'Dunk'],
+  'IMG_0863': [],
+  'IMG_0905': [],
+  'IMG_0919': [],
+  '20250209_WBBvsMiami_JoshuaHartlep-5': [],
+  '20250303_MBBvsWakeForest_JoshuaHartlep-2': [],
+  '20250303_MBBvsWakeForest_JoshuaHartlep-22': [],
+  '20250303_MBBvsWakeForest_JoshuaHartlep-36': [],
+  'JoshHartlep_1HWBBvStanford_011924-7': [],
+  'IMG_0913': [],
+  'IMG_6351': [],
+  '20240929_FHvsSyracuse_JoshuaHartlep-13': [],
+  '20241024_WSOCvsND_JoshuaHartlep-4': [],
+  
+  // Misc photos
   'JoshHartlep_Gardens_011324-15': ['nature', 'gardens', 'landscape', 'Duke Gardens'],
   'Hartlep_DukeSnow011024-1': ['snow', 'winter', 'Duke', 'campus', 'landscape'],
-  // Add more photos and their tags here...
+  'IMG_0776': [],
+  '20250203_Gardens_JoshuaHartlep-33': [],
+  '20250203_Gardens_JoshuaHartlep-17': [],
+  'JoshHartlep_Gardens_011324-12': [],
+  'Hartlep_DukeSnow011024-4': [],
+  'IMG_0815': [],
+  'IMG_5193': [],
+  'IMG_5194': [],
+  '121224_JoshHartlep-44': [],
+  '121224_JoshHartlep-51': [],
 };
 
 // Helper function to highlight matching text
