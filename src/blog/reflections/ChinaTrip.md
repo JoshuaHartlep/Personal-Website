@@ -1,12 +1,12 @@
 ---
-title: "10 Days in China Changed How I Think About Everything"
+title: "How 10 Days in China Changed My View of the World"
 date: "2025-07-06"
 category: "reflections"
 tags: ["china", "cultural-immersion", "duke-kunshan", "travel", "perspective"]
 thumbnail: "ChinaBlogPic.jpg"
 ---
 
-# 10 Days in China Changed How I Think About Everything
+# How 10 Days in China Changed My View of the World
 
 I just got back from Duke's cultural immersion program in China, and honestly, I'm still processing everything. When I signed up for this all-expenses-paid trip through Duke Kunshan University, I thought it would be a cool way to see the Great Wall and maybe pick up some cultural knowledge. What I didn't expect was for it to completely rewire how I think about community, urban design, and what "normal" life actually looks like.
 
