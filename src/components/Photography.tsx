@@ -48,6 +48,16 @@ const PHOTO_TAGS: Record<string, string[]> = {
   '[QB Darian Mensah (10)] 20250828 FB vs Elon Joshua Hartlep 08': ['Football', 'Elon', 'Darian Mensah'],
   '[K Todd Pelino (29)] 20250828 FB vs Elon Joshua Hartlep 04': ['Football', 'Elon', 'K Todd Pelino'],
   '20250828 FB vs Elon Joshua Hartlep 03': ['Football', 'Elon'],
+  '[Caleb Foster (1)] 20251026 BASKETBALL vs TENNESSEE Joshua Hartlep 01': ['Basketball', 'Tennessee', 'Caleb Foster'],
+  '[Cameron Boozer (12)] 20251026 BASKETBALL vs TENNESSEE Joshua Hartlep 04': ['Basketball', 'Tennessee', 'Cameron Boozer'],
+  '[Cameron Boozer (12)] 2025-11-04 Joshua Hartlep 03': ['Basketball', 'Cameron Boozer', 'Texas'],
+  '[Dame Sarr (7)] 2025-11-04 Joshua Hartlep 05': ['Basketball', 'Dame Sarr', 'Texas'],
+  '[Dick Vitale] 2025-11-04 Joshua Hartlep 01': ['Basketball', 'Dick Vitale', 'Texas'],
+  '[Isaiah Evans (3)] 2025-11-04 Joshua Hartlep 03': ['Basketball', 'Isaiah Evans', 'Texas'],
+  '[Isaiah Evans (3)] 2025-11-04 Joshua Hartlep 05': ['Basketball', 'Isaiah Evans', 'Texas'],
+  '[Isaiah Evans (3)] 2025-11-04 Joshua Hartlep 07': ['Basketball', 'Isaiah Evans', 'Texas'],
+  '[Nikolas Khamenia (14), Caleb Foster (1)] 20251026 BASKETBALL vs TENNESSEE Joshua Hartlep 09': ['Basketball', 'Tennessee', 'Nikolas Khamenia', 'Caleb Foster'],
+  '[Patrick Ngongba II (21)] 2025-11-04 Joshua Hartlep 04': ['Basketball', 'Patrick Ngongba II', 'Texas'],
   
   // Misc photos
   'JoshHartlep_Gardens_011324-15': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
