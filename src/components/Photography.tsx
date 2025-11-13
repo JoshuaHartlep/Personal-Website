@@ -1,12 +1,14 @@
 import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { PHOTO_DATES } from '../utils/photo-dates';
 
 interface PhotoData {
   src: string;
   name: string;
   tags: string[];
   loaded?: boolean;
+  dateTaken?: Date; // Date when photo was taken (from EXIF, extracted at build time)
 }
 
 // Manual photo tagging map - add your photos and tags here
@@ -208,12 +210,26 @@ const Photography: React.FC = () => {
         const sportsPhotosData: PhotoData[] = Object.entries(sportsModules).map(([path, module]) => {
           const name = path.split('/').pop()?.split('.')[0] || 'Untitled';
           const tags = PHOTO_TAGS[name] || [];
+          const dateString = PHOTO_DATES[name];
+          const dateTaken = dateString ? new Date(dateString) : undefined;
           return {
             src: (module as { default: string }).default,
             name,
-            tags
+            tags,
+            dateTaken
           };
         });
+
+        // Sort sports photos by date (newest first), then by name if no date
+        sportsPhotosData.sort((a, b) => {
+          if (a.dateTaken && b.dateTaken) {
+            return b.dateTaken.getTime() - a.dateTaken.getTime();
+          }
+          if (a.dateTaken && !b.dateTaken) return -1;
+          if (!a.dateTaken && b.dateTaken) return 1;
+          return a.name.localeCompare(b.name);
+        });
+
         setSportsPhotos(sportsPhotosData);
 
         // Load misc photos
@@ -221,12 +237,26 @@ const Photography: React.FC = () => {
         const miscPhotosData: PhotoData[] = Object.entries(miscModules).map(([path, module]) => {
           const name = path.split('/').pop()?.split('.')[0] || 'Untitled';
           const tags = PHOTO_TAGS[name] || [];
+          const dateString = PHOTO_DATES[name];
+          const dateTaken = dateString ? new Date(dateString) : undefined;
           return {
             src: (module as { default: string }).default,
             name,
-            tags
+            tags,
+            dateTaken
           };
         });
+
+        // Sort misc photos by date (newest first), then by name if no date
+        miscPhotosData.sort((a, b) => {
+          if (a.dateTaken && b.dateTaken) {
+            return b.dateTaken.getTime() - a.dateTaken.getTime();
+          }
+          if (a.dateTaken && !b.dateTaken) return -1;
+          if (!a.dateTaken && b.dateTaken) return 1;
+          return a.name.localeCompare(b.name);
+        });
+
         setMiscPhotos(miscPhotosData);
       } catch (error) {
         console.error('Error loading photos:', error);
