@@ -19,16 +19,16 @@ const PHOTO_TAGS: Record<string, string[]> = {
   '20240929_FHvsSyracuse_JoshuaHartlep-16': ['Field Hockey', 'Syracuse', 'Womens'],
   'FlaggDunk-2': ['Cooper Flagg', 'Basketball', 'Dunk', 'Wake Forest'],
   'FlaggDunk-1': ['Cooper Flagg', 'Basketball', 'Dunk', 'Wake Forest'],
-  'IMG_0863': ['Basketball', 'Giannis Antetokounmpo', 'Bucks'],
-  'IMG_0905': ['Basketball', 'Giannis Antetokounmpo', 'Bucks'],
-  'IMG_0919': ['Basketball', 'Giannis Antetokounmpo', 'Bucks'],
+  'Giannis Antetokounmpo 1': ['Basketball', 'Giannis Antetokounmpo', 'Bucks'],
+  'Giannis Antetokounmpo 2': ['Basketball', 'Giannis Antetokounmpo', 'Bucks'],
+  'Giannis Antetokounmpo 3': ['Basketball', 'Giannis Antetokounmpo', 'Bucks'],
   '20250209_WBBvsMiami_JoshuaHartlep-5': ['Basketball', 'Womens', 'Miami'],
   '20250303_MBBvsWakeForest_JoshuaHartlep-2': ['Basketball', 'Cooper Flagg', 'Kon Knueppel', 'Khaman Maluach', 'Sion James', 'Wake Forest'],
   '20250303_MBBvsWakeForest_JoshuaHartlep-22': ['Basketball', 'Cooper Flagg', 'Kon Knueppel', 'Wake Forest'],
   '20250303_MBBvsWakeForest_JoshuaHartlep-36': ['Basketball', 'Spencer Hubbard', 'Wake Forest'],
   'JoshHartlep_1HWBBvStanford_011924-7': ['Basketball', 'Womens', 'Stanford'],
-  'IMG_0913': ['Basketball', 'Damian Lillard', 'Bucks'],
-  'IMG_6351': ['Soccer', 'Duke', 'Womens'],
+  'Damian Lillard 1': ['Basketball', 'Damian Lillard', 'Bucks'],
+  '20241003 WSOC': ['Soccer', 'Duke', 'Womens'],
   '20240929_FHvsSyracuse_JoshuaHartlep-13': ['Field Hockey', 'Syracuse', 'Womens'],
   '20241024_WSOCvsND_JoshuaHartlep-4': ['Soccer', 'Notre Dame', 'Womens'],
   '20250303_MBBvsWakeForest_JoshuaHartlep-103': ['Basketball', 'Fans', 'Senior Night'],
@@ -43,27 +43,28 @@ const PHOTO_TAGS: Record<string, string[]> = {
   '[QB Darian Mensah (10)] 20250828 FB vs Elon Joshua Hartlep 35': ['Football', 'Elon', 'Darian Mensah'],
   'Chandler Rivers & Terry Moore': ['Football', 'Elon', 'Chandler Rivers', 'Terry Moore'],
   '[WR Sahmir Hagans (2), QB Darian Mensah (10)] 20250828 FB vs Elon Joshua Hartlep 32': ['Football', 'Elon', 'Sahmir Hagans', 'Darian Mensah'],
-  '[] 20250828 FB vs Elon Joshua Hartlep 21': ['Football', 'Elon'],
+  '20250828 FB vs Elon Joshua Hartlep 21': ['Football', 'Elon'],
   '[QB Darian Mensah (10)] 20250828 FB vs Elon Joshua Hartlep 16': ['Football', 'Elon', 'Darian Mensah'],
   '[QB Darian Mensah (10)] 20250828 FB vs Elon Joshua Hartlep 08': ['Football', 'Elon', 'Darian Mensah'],
   '[K Todd Pelino (29)] 20250828 FB vs Elon Joshua Hartlep 04': ['Football', 'Elon', 'K Todd Pelino'],
-  '[] 20250828 FB vs Elon Joshua Hartlep 03': ['Football', 'Elon'],
-  '[QB Darian Mensah (10)] 20250828 FB vs Elon Joshua Hartlep 08 2': ['Football', 'Elon', 'Darian Mensah'],
-  '[QB Darian Mensah (10)] 20250828 FB vs Elon Joshua Hartlep 19': ['Football', 'Elon', 'Darian Mensah'],
+  '20250828 FB vs Elon Joshua Hartlep 03': ['Football', 'Elon'],
   
   // Misc photos
   'JoshHartlep_Gardens_011324-15': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
   'Hartlep_DukeSnow011024-1': ['Duke', 'Campus', 'Snow'],
-  'IMG_0776': ['Nature', 'Bird'],
+  'WI Bird 1': ['Nature', 'Bird'],
   '20250203_Gardens_JoshuaHartlep-33': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens', 'Flower'],
   '20250203_Gardens_JoshuaHartlep-17': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
   'JoshHartlep_Gardens_011324-12': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
   'Hartlep_DukeSnow011024-4': ['Duke', 'Students', 'Campus', 'Snow'],
-  'IMG_0815': ['Nature', 'Bird'],
-  'IMG_5193': ['Duke', 'Campus', 'Chapel'],
-  'IMG_5194': ['Duke', 'Campus', 'Chapel'],
+  'WI Bird 2': ['Nature', 'Bird'],
+  'Duke Chapel 1': ['Duke University', 'Duke Chapel'],
+  'Duke Chapel 2': ['Duke University', 'Duke Chapel'],
   '121224_JoshHartlep-44': ['Nature', 'Gardens', 'Bird', 'Duke Gardens'],
   '121224_JoshHartlep-51': ['Nature', 'Gardens', 'Bird', 'Duke Gardens', 'Cardinal'],
+  '2025-11-12 AG Jeff Jackson 01': ['Jeff Jackson', 'Conference', 'Talks'],
+  '2025-11-12 AG Jeff Jackson 02': ['Jeff Jackson', 'Conference', 'Talks'],
+  '2025-11-12 AG Jeff Jackson 03': ['Jeff Jackson', 'Conference', 'Talks'],
 };
 
 // Helper function to highlight matching text
@@ -176,7 +177,7 @@ const Photography: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'sports' | 'misc'>('sports');
   const [sportsPhotos, setSportsPhotos] = useState<PhotoData[]>([]);
   const [miscPhotos, setMiscPhotos] = useState<PhotoData[]>([]);
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
 
@@ -248,17 +249,65 @@ const Photography: React.FC = () => {
 
   const currentPhotos = activeTab === 'sports' ? filteredSportsPhotos : filteredMiscPhotos;
 
-  const openLightbox = (photoSrc: string) => {
-    setSelectedPhoto(photoSrc);
+  const openLightbox = (photoIndex: number) => {
+    setSelectedPhotoIndex(photoIndex);
     // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
   };
 
   const closeLightbox = () => {
-    setSelectedPhoto(null);
+    setSelectedPhotoIndex(null);
     // Restore body scroll when modal is closed
     document.body.style.overflow = 'unset';
   };
+
+  const goToPreviousPhoto = () => {
+    if (selectedPhotoIndex === null) return;
+    const newIndex = selectedPhotoIndex > 0 ? selectedPhotoIndex - 1 : currentPhotos.length - 1;
+    setSelectedPhotoIndex(newIndex);
+  };
+
+  const goToNextPhoto = () => {
+    if (selectedPhotoIndex === null) return;
+    const newIndex = selectedPhotoIndex < currentPhotos.length - 1 ? selectedPhotoIndex + 1 : 0;
+    setSelectedPhotoIndex(newIndex);
+  };
+
+  // Close lightbox if selected photo index is out of bounds (e.g., after filtering or tab change)
+  useEffect(() => {
+    if (selectedPhotoIndex !== null && (selectedPhotoIndex < 0 || selectedPhotoIndex >= currentPhotos.length)) {
+      setSelectedPhotoIndex(null);
+      document.body.style.overflow = 'unset';
+    }
+  }, [selectedPhotoIndex, currentPhotos.length]);
+
+  // Keyboard navigation for lightbox
+  useEffect(() => {
+    if (selectedPhotoIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        if (selectedPhotoIndex !== null && currentPhotos.length > 0) {
+          const newIndex = selectedPhotoIndex > 0 ? selectedPhotoIndex - 1 : currentPhotos.length - 1;
+          setSelectedPhotoIndex(newIndex);
+        }
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        if (selectedPhotoIndex !== null && currentPhotos.length > 0) {
+          const newIndex = selectedPhotoIndex < currentPhotos.length - 1 ? selectedPhotoIndex + 1 : 0;
+          setSelectedPhotoIndex(newIndex);
+        }
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        setSelectedPhotoIndex(null);
+        document.body.style.overflow = 'unset';
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedPhotoIndex, currentPhotos.length]);
 
   return (
     <div className="min-h-screen bg-[#dce6f1] dark:bg-[#012169] text-gray-900 dark:text-white">
@@ -378,7 +427,7 @@ const Photography: React.FC = () => {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
                     className="cursor-pointer group"
-                    onClick={() => openLightbox(photo.src)}
+                    onClick={() => openLightbox(index)}
                   >
                     <div 
                       className="bg-white dark:bg-gray-800 border-2 border-gray-300 dark:border-gray-700 overflow-hidden transition-transform group-hover:scale-105"
@@ -434,7 +483,7 @@ const Photography: React.FC = () => {
 
       {/* Lightbox Modal */}
       <AnimatePresence>
-        {selectedPhoto && (
+        {selectedPhotoIndex !== null && currentPhotos[selectedPhotoIndex] && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -443,17 +492,51 @@ const Photography: React.FC = () => {
             onClick={closeLightbox}
           >
             {/* Scrollable container */}
-            <div className="min-h-full flex items-start justify-center p-4 py-8">
+            <div className="min-h-full flex items-center justify-center p-4 py-8 relative">
+              {/* Left Arrow */}
+              {currentPhotos.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToPreviousPhoto();
+                  }}
+                  className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-gray-200 transition-all duration-200 bg-black/70 hover:bg-black/90 rounded-full p-2 md:p-3 shadow-lg border-2 border-white/20 active:scale-95"
+                  aria-label="Previous photo"
+                >
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
+
+              {/* Right Arrow */}
+              {currentPhotos.length > 1 && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    goToNextPhoto();
+                  }}
+                  className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-10 text-white hover:text-gray-200 transition-all duration-200 bg-black/70 hover:bg-black/90 rounded-full p-2 md:p-3 shadow-lg border-2 border-white/20 active:scale-95"
+                  aria-label="Next photo"
+                >
+                  <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
+                  </svg>
+                </button>
+              )}
+
               <motion.div
-                initial={{ scale: 0.8 }}
-                animate={{ scale: 1 }}
-                exit={{ scale: 0.8 }}
-                className="relative"
+                key={selectedPhotoIndex}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="relative max-w-[95vw] max-h-[90vh]"
                 onClick={(e) => e.stopPropagation()}
               >
                 <img
-                  src={selectedPhoto}
-                  alt="Full size"
+                  src={currentPhotos[selectedPhotoIndex].src}
+                  alt={currentPhotos[selectedPhotoIndex].name}
                   className="max-w-[95vw] max-h-[90vh] object-contain shadow-2xl"
                   style={{ imageRendering: 'pixelated' }}
                 />
@@ -462,11 +545,22 @@ const Photography: React.FC = () => {
                 <button
                   onClick={closeLightbox}
                   className="absolute -top-2 -right-2 z-10 text-white hover:text-gray-200 transition-all duration-200 bg-black/70 hover:bg-black/90 rounded-full p-2 shadow-lg border-2 border-white/20"
+                  aria-label="Close"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
+
+                {/* Photo info - positioned at top left */}
+                <div className="absolute top-0 left-0 bg-gradient-to-b from-black/80 to-transparent p-4 text-white rounded-br-lg">
+                  <p className="text-sm font-mono">{currentPhotos[selectedPhotoIndex].name}</p>
+                  {currentPhotos.length > 1 && (
+                    <p className="text-xs font-mono text-gray-300 mt-1">
+                      {selectedPhotoIndex + 1} of {currentPhotos.length}
+                    </p>
+                  )}
+                </div>
               </motion.div>
             </div>
           </motion.div>
