@@ -60,6 +60,9 @@ const PHOTO_TAGS: Record<string, string[]> = {
   '[Isaiah Evans (3)] 2025-11-04 Joshua Hartlep 07': ['Basketball', 'Isaiah Evans', 'Texas'],
   '[Nikolas Khamenia (14), Caleb Foster (1)] 20251026 BASKETBALL vs TENNESSEE Joshua Hartlep 09': ['Basketball', 'Tennessee', 'Nikolas Khamenia', 'Caleb Foster'],
   '[Patrick Ngongba II (21)] 2025-11-04 Joshua Hartlep 04': ['Basketball', 'Patrick Ngongba II', 'Texas'],
+  '20260118MTENNvsJMU': ['Tennis', 'Dylan Long', 'JMU'],
+  '20260118MTENNvsJMU-2': ['Tennis', 'Dylan Long', 'Gerard Planelles Ripoll', 'JMU'],
+
   
   // Misc photos
   'JoshHartlep_Gardens_011324-15': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
