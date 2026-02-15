@@ -67,13 +67,20 @@ I should have focused on the present version of myself, but it was just too hard
 
 ## Squat
 
-My opener was 175 kg (385 lbs). It moved smoothly. Three white lights. That always feels good.
-
-Second attempt was 182.5 kg (402 lbs). That one required focus, but it was controlled. Locked it out clean. That being said, I knew that was about all that I had in me.
-
-For my third, I called for 185 kg (408 lbs). I wanted to push it. As I unracked it, I could tell it was I didn't have it, and I was okay with that. I fought it out of the hole, but I stalled and had to dump it.
-
-No regrets there. It was an honest miss. I walked off feeling steady and happy I didn't fight too long, and instead saved my energy.
+<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start; margin: 1rem 0;">
+  <div style="flex: 1; min-width: 250px;">
+    <p>My opener was 175 kg (385 lbs). It moved smoothly. Three white lights. That always feels good.</p>
+    <p>Second attempt was 182.5 kg (402 lbs). That one required focus, but it was controlled. Locked it out clean. That being said, I knew that was about all that I had in me.</p>
+    <p>For my third, I called for 185 kg (408 lbs). I wanted to push it. As I unracked it, I could tell it was I didn't have it, and I was okay with that. I fought it out of the hole, but I stalled and had to dump it.</p>
+    <p>No regrets there. It was an honest miss. I walked off feeling steady and happy I didn't fight too long, and instead saved my energy.</p>
+  </div>
+  <div style="flex: 1; min-width: 250px; max-width: 400px;">
+    <video controls width="100%" style="border-radius: 8px;">
+      <source src="/videos/SquatVideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 ---
 
@@ -91,20 +98,22 @@ In powerlifting, your first attempt (opener) should be extremely easy. I set my 
 
 During warmups, I felt slow. After some deliberation, I finally came down to earth and tried to lower my opener to 235 at the table. Unfortunately, the guy told me it was too late. Once the round is about to start, you are locked in.
 
-First attempt: 110 kg.  
-Two red lights. One white. I got it up, but my heels were not fully flat.
-
-Second attempt: 110 again.  
-Missed it. After they made me rerack due to form, I just couldn't press it up.
-
-Now I was in a position you should never be in at a meet. Third attempt. Same weight. Everything on the line. I tried my best to lock in, knowing I _had_ to hit this.
-
-I took it down. Pressed. It was a grind if I've ever had one. Probably a ten-second rep. I locked it out and thought I saved it. But no.
-
-Two red lights. One white.  
-Butt came off the bench.
-
-I bombed out. 0 for 3.
+<div style="display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start; margin: 1rem 0;">
+  <div style="flex: 1; min-width: 250px;">
+    <p>First attempt: 110 kg.<br>Two red lights. One white. I got it up, but my heels were not fully flat.</p>
+    <p>Second attempt: 110 again.<br>Missed it. After they made me rerack due to form, I just couldn't press it up.</p>
+    <p>Now I was in a position you should never be in at a meet. Third attempt. Same weight. Everything on the line. I tried my best to lock in, knowing I <em>had</em> to hit this.</p>
+    <p>I took it down. Pressed. It was a grind if I've ever had one. Probably a ten-second rep. I locked it out and thought I saved it. But no.</p>
+    <p>Two red lights. One white.<br>Butt came off the bench.</p>
+    <p><strong>I bombed out. 0 for 3.</strong></p>
+  </div>
+  <div style="flex: 1; min-width: 250px; max-width: 400px;">
+    <video controls width="100%" style="border-radius: 8px;">
+      <source src="/videos/BenchVideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+</div>
 
 That meant I was disqualified from the total.
 
