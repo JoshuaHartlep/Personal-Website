@@ -49,6 +49,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, searchTerm = '' }) => {
   const positionMap: Record<string, string> = {
     'ChinaBlogPic.jpg': 'center 30%',
     'InternshipBlogPic.jpg': 'center 42%', // horizontal then vertical
+    'PowerliftingGroupPic.jpeg': 'center 30%',
   };
   
   // Map thumbnail names to imported images
