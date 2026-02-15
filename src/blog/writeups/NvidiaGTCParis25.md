@@ -6,7 +6,7 @@ tags: ["nvidia", "ai", "gtc", "hardware", "ai-agents", "europe", "jensen-huang",
 thumbnail: "NvidiaGTCParisBlogPic.jpeg"
 ---
 
-# NVIDIA's GTC Paris: AI Agents are insane (And Your Future Job)
+<img src="/images/NvidiaGTCParisBlogPic.jpeg" alt="NVIDIA GTC Paris 2025" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin-bottom: 1.5rem;" />
 
 At GTC Paris 2025, Jensen Huang didn't just lay out NVIDIA's roadmap, he basically gave us a crystal ball into how AI is about to reshape everything. And honestly, after digging deeper into what was announced, I'm convinced we're watching the moment AI went from "cool tech demo" to "fundamental infrastructure that will define who wins and loses over the next decade."
 

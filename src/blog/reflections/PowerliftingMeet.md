@@ -7,7 +7,7 @@ tags:
 thumbnail: 'PowerliftingGroupPic.jpeg'
 ---
 
-# North Carolina Powerlifting State Championships 2026: What Months of Prep Just to Bomb Out Taught Me
+<img src="/images/PowerliftingGroupPic.jpeg" alt="Powerlifting meet group photo" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin-bottom: 1.5rem;" />
 
 ### 📱 [Watch the TikTok Summary](https://www.tiktok.com/@joshhartlep/video/7604598411467312415)
 

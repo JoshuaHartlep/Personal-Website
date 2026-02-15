@@ -6,13 +6,13 @@ tags: ["apple", "stocks", "ai", "siri", "personal-opinion", "WWDC", "Perplexity"
 thumbnail: "AppleStockBlogPic.png"
 ---
 
-# Why I Think Apple Stock Is Lagging in 2025
+<img src="/images/AppleStockBlogPic.png" alt="Apple stock analysis" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin-bottom: 1.5rem;" />
 
-As of July 5, 2025, Apple stock is down **12.43%** year‑to‑date. That's way harsher than I expected, especially since the broader tech rally seems to have bypassed AAPL. Here’s my take, with some research, but still a bunch of my opinions.
+As of July 5, 2025, Apple stock is down **12.43%** year‑to‑date. That's way harsher than I expected, especially since the broader tech rally seems to have bypassed AAPL. Here’s my take, with some research, but still a bunch of my opinions.
 
 ## 1. Scale Means Slower Growth
 
-Apple is a giant. With a valuation north of $3 trillion, hitting new highs gets way harder. You can’t keep cranking out growth when you’re already at that scale—it’s just math. Even analysts are pointing out iPhone demand has been flat & services growth is slowing.
+Apple is a giant. With a valuation north of $3 trillion, hitting new highs gets way harder. You can’t keep cranking out growth when you’re already at that scale—it’s just math. Even analysts are pointing out iPhone demand has been flat & services growth is slowing.
 
 ## 2. AI Isn’t *That* Exciting
 

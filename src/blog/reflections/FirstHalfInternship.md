@@ -6,7 +6,7 @@ tags: ["internship", "electrical-engineering", "software-engineering", "automati
 thumbnail: "InternshipBlogPic.jpg"
 ---
 
-# Halfway through: What I've Learned as an Electrical/Software Engineering Intern
+<img src="/images/InternshipBlogPic.jpg" alt="Internship experience" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin-bottom: 1.5rem;" />
 
 A month into my electrical/controls software internship at Worthington Enterprises, and honestly, I'm starting to understand why people say internships are where you actually learn how engineering works in the real world. The technical skills are only half the story, the other half is figuring out how to navigate professional dynamics, manage projects, and communicate ideas effectively.
 

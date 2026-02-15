@@ -6,11 +6,11 @@ tags: ["ansys", "simulation", "AI", "engineering", "conference"]
 thumbnail: "AnsysSimulationWorldThumbnail.jpg"
 ---
 
-# What I Learned at Ansys Simulation World 2025
+<img src="/images/AnsysSimulationWorldThumbnail.jpg" alt="Ansys Simulation World 2025" style="width: 100%; max-width: 800px; height: auto; border-radius: 8px; margin-bottom: 1.5rem;" />
 
 **Ansys Simulation World** is a global two-day event that brings together engineers, researchers, and technologists to explore the future of simulation and its role in solving some of the most complex challenges across industries. It features talks from top tech leaders, product demos, customer success stories, and deep dives into how simulation is being accelerated by AI and HPC.
 
-I was only able to attend **Day 2** (July 17) of Ansys Simulation World 2025—Day 1 clashed with my internship—but I already had a fantastic experience. I’m planning to rewatch a bunch of the Day 1 recordings (especially Jensen Huang’s keynote on accelerated computing and Sandashiv Pimple’s talk on circuit breaker design) to round out what I learned.
+I was only able to attend **Day 2** (July 17) of Ansys Simulation World 2025—Day 1 clashed with my internship—but I already had a fantastic experience. I’m planning to rewatch a bunch of the Day 1 recordings (especially Jensen Huang’s keynote on accelerated computing and Sandashiv Pimple’s talk on circuit breaker design) to round out what I learned.
 
 ---
 
@@ -52,7 +52,7 @@ It was a front-row seat to how AI is no longer an adjunct—it’s embedded in s
 
 ## High‑Fidelity Aerodynamics + GPUs
 
-At 11 AM EDT, **Dr. Neil Ashton (NVIDIA)** presented “Enabling Rapid High‑Fidelity External Aerodynamics CFD Simulations with Ansys Fluent and NVIDIA Accelerated Computing.”  
+At 11 AM EDT, **Dr. Neil Ashton (NVIDIA)** presented “Enabling Rapid High‑Fidelity External Aerodynamics CFD Simulations with Ansys Fluent and NVIDIA Accelerated Computing.”  
 He showcased:
 
 - The push for high‑fidelity, GPU-accelerated CFD in automotive  
@@ -78,7 +78,7 @@ Seeing how simulation time drops dramatically with GPU support makes me think di
 
 ## What I’m Taking With Me
 
-- **Rewatch Day 1 recordings** to fill in gaps and catch more keynotes  
+- **Rewatch Day 1 recordings** to fill in gaps and catch more keynotes  
 - Explore more on **AI copilots + simulation**—this is where future productivity lies  
 - Look into **Ansys Fluent + NVIDIA GPU acceleration**, since HPC is only going to grow in relevance for control and electrical systems
 
@@ -86,7 +86,7 @@ Seeing how simulation time drops dramatically with GPU support makes me think di
 
 ## Thank You, Ansys!
 
-Even though I missed the first day, Day 2 was full of insight, live interaction, and next‑gen ideas. Big thanks to Ansys for hosting such a polished experience and for making recordings available afterward—I'll make sure to catch up on everything I missed.
+Even though I missed the first day, Day 2 was full of insight, live interaction, and next‑gen ideas. Big thanks to Ansys for hosting such a polished experience and for making recordings available afterward—I'll make sure to catch up on everything I missed.
 
 ---
 
