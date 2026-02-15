@@ -9,6 +9,8 @@ thumbnail: 'PowerliftingGroupPic.jpeg'
 
 # North Carolina Powerlifting State Championships 2026: What Months of Prep Just to Bomb Out Taught Me
 
+### 📱 [Watch the TikTok Summary](https://www.tiktok.com/@joshhartlep/video/7604598411467312415)
+
 On January 31st, 2026, I competed at the North Carolina State Championship powerlifting meet just outside of Charlotte. It was my first meet in two years. I had circled that date on my calendar for months.
 
 Technically, I prepared specifically for about eight weeks. Realistically, the journey started way before that.
