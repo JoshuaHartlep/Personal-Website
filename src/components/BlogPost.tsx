@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw';
 import { getBlogPost } from '../utils/blog';
 import type { BlogPost } from '../utils/blog';
 
@@ -103,7 +104,7 @@ const BlogPostPage: React.FC = () => {
         </header>
 
         <div className="prose dark:prose-invert max-w-none">
-          <ReactMarkdown>{post.content}</ReactMarkdown>
+          <ReactMarkdown rehypePlugins={[rehypeRaw]}>{post.content}</ReactMarkdown>
         </div>
       </div>
     </motion.article>
