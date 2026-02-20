@@ -66,6 +66,10 @@ const PHOTO_TAGS: Record<string, string[]> = {
   '[Riley Nelson (4)] 2026-02-05 Joshua Hartlep 04': ['Basketball', 'Womens', 'Louisville', 'Riley Nelson'],
   '[Riley Nelson (4)] 2026-02-05 Joshua Hartlep 09': ['Basketball', 'Womens', 'Louisville', 'Riley Nelson'],
   '[Toby Fournier (35)] 2026-02-05 Joshua Hartlep 07': ['Basketball', 'Womens', 'Louisville', 'Toby Fournier'],
+  '[Arianna Roberson (21), Riley Nelson (4)] 2026-02-19 WBB VS NC State Joshua Hartlep 06': ['Basketball', 'Womens', 'NC State', 'Arianna Roberson', 'Riley Nelson'],
+  '[Arianna Roberson (21)] 2026-02-19 WBB VS NC State Joshua Hartlep 01': ['Basketball', 'Womens', 'NC State', 'Arianna Roberson'],
+  '[Taina Mair (22)] 2026-02-19 WBB VS NC State Joshua Hartlep 03': ['Basketball', 'Womens', 'NC State', 'Taina Mair'],
+  '[Taina Mair (22)] 2026-02-19 WBB VS NC State Joshua Hartlep 05': ['Basketball', 'Womens', 'NC State', 'Taina Mair'],
 
   // Misc photos
   'JoshHartlep_Gardens_011324-15': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
@@ -212,7 +216,7 @@ const Photography: React.FC = () => {
       
       try {
         // Load sports photos
-        const sportsModules = import.meta.glob('/src/assets/photography/sports/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', { eager: true });
+        const sportsModules = import.meta.glob('/src/assets/photography/sports/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}', { eager: true });
         const sportsPhotosData: PhotoData[] = Object.entries(sportsModules).map(([path, module]) => {
           const name = path.split('/').pop()?.split('.')[0] || 'Untitled';
           const tags = PHOTO_TAGS[name] || [];
