@@ -5,12 +5,18 @@ import ReactMarkdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import { getBlogPost } from '../utils/blog';
 import type { BlogPost } from '../utils/blog';
+import { useDocumentMeta } from '../utils/useDocumentMeta';
 
 const BlogPostPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const [post, setPost] = useState<BlogPost | null>(null);
   const [loading, setLoading] = useState(true);
+
+  useDocumentMeta({
+    title: post ? `${post.title} - Joshua Hartlep` : 'Joshua Hartlep - Check out my blogs!',
+    description: post?.excerpt || 'Tech write-ups, reflections, and blogs by Joshua Hartlep.'
+  });
 
   useEffect(() => {
     const loadPost = async () => {

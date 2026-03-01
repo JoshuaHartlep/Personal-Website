@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { PHOTO_DATES } from '../utils/photo-dates';
+import { useDocumentMeta } from '../utils/useDocumentMeta';
 
 interface PhotoData {
   src: string;
@@ -222,6 +223,11 @@ const LazyImage: React.FC<{
 };
 
 const Photography: React.FC = () => {
+  useDocumentMeta({
+    title: 'Joshua Hartlep - Check out my photography portfolio!',
+    description: 'Sports photography, nature shots, and more by Joshua Hartlep. Duke Blue Devils athletics and beyond.'
+  });
+
   const [activeTab, setActiveTab] = useState<'sports' | 'misc'>('sports');
   const [sportsPhotos, setSportsPhotos] = useState<PhotoData[]>([]);
   const [miscPhotos, setMiscPhotos] = useState<PhotoData[]>([]);

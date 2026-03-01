@@ -14,6 +14,7 @@ import ThemeDropdown from './components/ThemeDropdown';
 import NavigationButtons from './components/NavigationButtons';
 import ParallaxBackground from './components/ParallaxBackground';
 import { initFadeUpAnimations } from './utils/scrollFadeUp';
+import { useDocumentMeta } from './utils/useDocumentMeta';
 
 // Import background images
 import heroLight from './assets/hero_light.png';
@@ -33,12 +34,17 @@ interface HomePageWrapperProps {
 }
 
 const HomePageWrapper: React.FC<HomePageWrapperProps> = ({ titleBoxRef }) => {
+  useDocumentMeta({
+    title: 'Joshua Hartlep - Check out my website!',
+    description: 'Joshua Hartlep. Future-Ready Engineer | ECE & CS @ Duke | Product + Systems Builder. Blogs. Tech Write-ups. Photography Portfolio.'
+  });
+
   useEffect(() => {
     // Reinitialize fade-up animations when home page loads
     const timer = setTimeout(() => {
       initFadeUpAnimations();
     }, 100);
-    
+
     return () => clearTimeout(timer);
   }, []);
 

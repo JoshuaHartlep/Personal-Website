@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { getProject } from '../utils/projects';
 import type { Project } from '../utils/projects';
+import { useDocumentMeta } from '../utils/useDocumentMeta';
 
 // Import all project assets
 import koiSushi from '../assets/KoiSushi.jpeg';
@@ -137,6 +138,11 @@ const ProjectPost: React.FC = () => {
   const navigate = useNavigate();
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
+
+  useDocumentMeta({
+    title: project ? `${project.title} - Joshua Hartlep` : 'Joshua Hartlep - Check out my projects!',
+    description: project?.description || 'Projects and portfolio by Joshua Hartlep. ECE & CS @ Duke.'
+  });
 
   useEffect(() => {
     const loadProject = async () => {
