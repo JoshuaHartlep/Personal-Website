@@ -70,6 +70,32 @@ const PHOTO_TAGS: Record<string, string[]> = {
   '[Arianna Roberson (21)] 2026-02-19 WBB VS NC State Joshua Hartlep 01': ['Basketball', 'Womens', 'NC State', 'Arianna Roberson'],
   '[Taina Mair (22)] 2026-02-19 WBB VS NC State Joshua Hartlep 03': ['Basketball', 'Womens', 'NC State', 'Taina Mair'],
   '[Taina Mair (22)] 2026-02-19 WBB VS NC State Joshua Hartlep 05': ['Basketball', 'Womens', 'NC State', 'Taina Mair'],
+  // MBB vs Michigan @ DC
+  '[Caleb Foster (1)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 02': ['Basketball', 'Michigan', 'Caleb Foster'],
+  '[Caleb Foster (1)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 09': ['Basketball', 'Michigan', 'Caleb Foster'],
+  '[Caleb Foster (1)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 10': ['Basketball', 'Michigan', 'Caleb Foster'],
+  '[Cameron Boozer (12)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 07': ['Basketball', 'Michigan', 'Cameron Boozer'],
+  '[Cameron Boozer (12)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 11': ['Basketball', 'Michigan', 'Cameron Boozer'],
+  '[Dame Sarr (7)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 06': ['Basketball', 'Michigan', 'Dame Sarr'],
+  '[HC Jon Scheyer] 20260222 MBB vs Michigan @ DC Joshua Hartlep 05': ['Basketball', 'Michigan', 'Jon Scheyer'],
+  '[Isaiah Evans (3)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 01': ['Basketball', 'Michigan', 'Isaiah Evans'],
+  '[Isaiah Evans (3)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 08': ['Basketball', 'Michigan', 'Isaiah Evans'],
+  '[Maliq Brown (6)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 04': ['Basketball', 'Michigan', 'Maliq Brown'],
+  '[Patrick Ngongba II (21),Isaiah Evans (3),Cayden Boozer (2)] 20260222 MBB vs Michigan @ DC Joshua Hartlep 03': ['Basketball', 'Michigan', 'Patrick Ngongba II', 'Isaiah Evans', 'Cayden Boozer'],
+  '[] 20260222 MBB vs Michigan @ DC Joshua Hartlep 12': ['Basketball', 'Michigan'],
+  // Baseball vs Milwaukee
+  '[-BSB10] 20260221 BASE vs Milwaukee Joshua Hartlep 04': ['Baseball', 'Milwaukee'],
+  '[1B-OF Brooks Perez (22)] 20260221 BASE vs Milwaukee Joshua Hartlep 02': ['Baseball', 'Milwaukee', 'Brooks Perez'],
+  '[INF Coltin Quagliano (3)] 20260221 BASE vs Milwaukee Joshua Hartlep 03': ['Baseball', 'Milwaukee', 'Coltin Quagliano'],
+  '[RHP Aidan Weaver (10)] 20260221 BASE vs Milwaukee Joshua Hartlep 01': ['Baseball', 'Milwaukee', 'Aidan Weaver'],
+  // Softball vs Ohio State
+  '[Aminah Vega (17)] 20260301-SB-OSU Joshua Hartlep 06': ['Softball', 'Womens', 'Ohio State', 'Aminah Vega'],
+  '[Cassidy Curd (19)] 20260301-SB-OSU Joshua Hartlep 01': ['Softball', 'Womens', 'Ohio State', 'Cassidy Curd'],
+  '[Cassidy Curd (19)] 20260301-SB-OSU Joshua Hartlep 02': ['Softball', 'Womens', 'Ohio State', 'Cassidy Curd'],
+  "[D'Auna Jennings (10)] 20260301-SB-OSU Joshua Hartlep 03": ['Softball', 'Womens', 'Ohio State', "D'Auna Jennings"],
+  '[Kairi Rodriguez (32)] 20260301-SB-OSU Joshua Hartlep 05': ['Softball', 'Womens', 'Ohio State', 'Kairi Rodriguez'],
+  '[Layla Lamar (7)] 20260301-SB-OSU Joshua Hartlep 04': ['Softball', 'Womens', 'Ohio State', 'Layla Lamar'],
+  '[] 20260301-SB-OSU Joshua Hartlep 07': ['Softball', 'Womens', 'Ohio State'],
 
   // Misc photos
   'JoshHartlep_Gardens_011324-15': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
