@@ -97,6 +97,10 @@ const PHOTO_TAGS: Record<string, string[]> = {
   '[Kairi Rodriguez (32)] 20260301-SB-OSU Joshua Hartlep 05': ['Softball', 'Womens', 'Ohio State', 'Kairi Rodriguez'],
   '[Layla Lamar (7)] 20260301-SB-OSU Joshua Hartlep 04': ['Softball', 'Womens', 'Ohio State', 'Layla Lamar'],
   '[] 20260301-SB-OSU Joshua Hartlep 07': ['Softball', 'Womens', 'Ohio State'],
+  // MBB @ NC State
+  'Isaiah Evans Shoes-1': ['Basketball', 'NC State', 'Isaiah Evans', 'Shoes'],
+  'Isaiah Evans Shoes-2': ['Basketball', 'NC State', 'Isaiah Evans', 'Shoes'],
+  'Isaiah Evans Shoes-3': ['Basketball', 'NC State', 'Isaiah Evans', 'Shoes'],
 
   // Misc photos
   'JoshHartlep_Gardens_011324-15': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
