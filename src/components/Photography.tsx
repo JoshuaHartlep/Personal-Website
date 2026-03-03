@@ -115,12 +115,12 @@ const PHOTO_TAGS: Record<string, string[]> = {
   'Isaiah Evans Shoes-1': ['Basketball', 'NC State', 'Isaiah Evans', 'Shoes'],
   'Isaiah Evans Shoes-2': ['Basketball', 'NC State', 'Isaiah Evans', 'Shoes'],
   'Isaiah Evans Shoes-3': ['Basketball', 'NC State', 'Isaiah Evans', 'Shoes'],
-  '[Caleb Foster (1)] 20260302 MBB vs NC State Joshua Hartlep 01': ['Basketball', 'NC State', 'Caleb Foster'],
-  '[Cameron Boozer (12),Caleb Foster (1)] 20260302 MBB vs NC State Joshua Hartlep 02': ['Basketball', 'NC State', 'Cameron Boozer', 'Caleb Foster'],
-  '[Cameron Boozer (12)] 20260302 MBB vs NC State Joshua Hartlep 08 copy': ['Basketball', 'NC State', 'Cameron Boozer'],
-  '[Cameron Boozer (12)] 20260302 MBB vs NC State Joshua Hartlep 09 copy': ['Basketball', 'NC State', 'Cameron Boozer'],
-  '[Dame Sarr (7)] 20260302 MBB vs NC State Joshua Hartlep 16': ['Basketball', 'NC State', 'Dame Sarr'],
-  '[Dame Sarr (7)] 20260302 MBB vs NC State Joshua Hartlep 20': ['Basketball', 'NC State', 'Dame Sarr'],
+  '[Caleb Foster (1)] 20260302-MBB-@NCState Joshua Hartlep 01': ['Basketball', 'NC State', 'Caleb Foster'],
+  '[Cameron Boozer (12),Caleb Foster (1)] 20260302-MBB-@NCState Joshua Hartlep 03': ['Basketball', 'NC State', 'Cameron Boozer', 'Caleb Foster'],
+  '[Cameron Boozer (12)] 20260302-MBB-@NCState Joshua Hartlep 04': ['Basketball', 'NC State', 'Cameron Boozer'],
+  '[Cameron Boozer (12)] 20260302-MBB-@NCState Joshua Hartlep 05': ['Basketball', 'NC State', 'Cameron Boozer'],
+  '[Dame Sarr (7)] 20260302-MBB-@NCState Joshua Hartlep 02': ['Basketball', 'NC State', 'Dame Sarr'],
+  '[Dame Sarr (7)] 20260302-MBB-@NCState Joshua Hartlep 06': ['Basketball', 'NC State', 'Dame Sarr'],
 
   // Misc photos
   'JoshHartlep_Gardens_011324-15': ['Nature', 'Gardens', 'Landscape', 'Duke Gardens'],
