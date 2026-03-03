@@ -1,8 +1,22 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { PHOTO_DATES } from '../utils/photo-dates';
 import { useDocumentMeta } from '../utils/useDocumentMeta';
+
+// Helper to convert photo name to URL-safe slug
+const slugify = (name: string): string => {
+  return name
+    .toLowerCase()
+    .replace(/[[\]()]/g, '') // Remove brackets and parentheses
+    .replace(/[^a-z0-9]+/g, '-') // Replace non-alphanumeric with hyphens
+    .replace(/^-+|-+$/g, ''); // Trim leading/trailing hyphens
+};
+
+// Helper to find photo by slug
+const findPhotoBySlug = (photos: PhotoData[], slug: string): number => {
+  return photos.findIndex(photo => slugify(photo.name) === slug);
+};
 
 interface PhotoData {
   src: string;
@@ -227,10 +241,8 @@ const LazyImage: React.FC<{
 };
 
 const Photography: React.FC = () => {
-  useDocumentMeta({
-    title: 'Joshua Hartlep - Check out my photography portfolio!',
-    description: 'Sports photography, nature shots, and more by Joshua Hartlep. Duke Blue Devils athletics and beyond.'
-  });
+  const navigate = useNavigate();
+  const { slug } = useParams<{ slug?: string }>();
 
   const [activeTab, setActiveTab] = useState<'sports' | 'misc'>('sports');
   const [sportsPhotos, setSportsPhotos] = useState<PhotoData[]>([]);
@@ -238,6 +250,7 @@ const Photography: React.FC = () => {
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
+  const [initialSlugProcessed, setInitialSlugProcessed] = useState(false);
 
   // Cleanup scroll lock on component unmount
   useEffect(() => {
@@ -335,37 +348,83 @@ const Photography: React.FC = () => {
 
   const currentPhotos = activeTab === 'sports' ? filteredSportsPhotos : filteredMiscPhotos;
 
-  const openLightbox = (photoIndex: number) => {
+  // Get current photo for dynamic meta
+  const currentPhoto = selectedPhotoIndex !== null ? currentPhotos[selectedPhotoIndex] : null;
+
+  useDocumentMeta({
+    title: currentPhoto
+      ? `${currentPhoto.name} - Joshua Hartlep Photography`
+      : 'Joshua Hartlep - Check out my photography portfolio!',
+    description: currentPhoto
+      ? `${currentPhoto.tags.join(', ')} - Photo by Joshua Hartlep`
+      : 'Sports photography, nature shots, and more by Joshua Hartlep. Duke Blue Devils athletics and beyond.'
+  });
+
+  const openLightbox = useCallback((photoIndex: number) => {
     setSelectedPhotoIndex(photoIndex);
-    // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
-  };
+    // Update URL with photo slug
+    const photo = currentPhotos[photoIndex];
+    if (photo) {
+      navigate(`/photography/${slugify(photo.name)}`, { replace: true });
+    }
+  }, [currentPhotos, navigate]);
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setSelectedPhotoIndex(null);
-    // Restore body scroll when modal is closed
     document.body.style.overflow = 'unset';
-  };
+    // Navigate back to gallery URL
+    navigate('/photography', { replace: true });
+  }, [navigate]);
 
-  const goToPreviousPhoto = () => {
+  const goToPreviousPhoto = useCallback(() => {
     if (selectedPhotoIndex === null) return;
     const newIndex = selectedPhotoIndex > 0 ? selectedPhotoIndex - 1 : currentPhotos.length - 1;
     setSelectedPhotoIndex(newIndex);
-  };
+    const photo = currentPhotos[newIndex];
+    if (photo) {
+      navigate(`/photography/${slugify(photo.name)}`, { replace: true });
+    }
+  }, [selectedPhotoIndex, currentPhotos, navigate]);
 
-  const goToNextPhoto = () => {
+  const goToNextPhoto = useCallback(() => {
     if (selectedPhotoIndex === null) return;
     const newIndex = selectedPhotoIndex < currentPhotos.length - 1 ? selectedPhotoIndex + 1 : 0;
     setSelectedPhotoIndex(newIndex);
-  };
+    const photo = currentPhotos[newIndex];
+    if (photo) {
+      navigate(`/photography/${slugify(photo.name)}`, { replace: true });
+    }
+  }, [selectedPhotoIndex, currentPhotos, navigate]);
+
+  // Handle opening photo from URL slug on initial load
+  useEffect(() => {
+    if (!loading && !initialSlugProcessed && slug) {
+      // Try to find the photo in sports photos first
+      let photoIndex = findPhotoBySlug(sportsPhotos, slug);
+      if (photoIndex !== -1) {
+        setActiveTab('sports');
+        setSelectedPhotoIndex(photoIndex);
+        document.body.style.overflow = 'hidden';
+      } else {
+        // Try misc photos
+        photoIndex = findPhotoBySlug(miscPhotos, slug);
+        if (photoIndex !== -1) {
+          setActiveTab('misc');
+          setSelectedPhotoIndex(photoIndex);
+          document.body.style.overflow = 'hidden';
+        }
+      }
+      setInitialSlugProcessed(true);
+    }
+  }, [loading, slug, sportsPhotos, miscPhotos, initialSlugProcessed]);
 
   // Close lightbox if selected photo index is out of bounds (e.g., after filtering or tab change)
   useEffect(() => {
     if (selectedPhotoIndex !== null && (selectedPhotoIndex < 0 || selectedPhotoIndex >= currentPhotos.length)) {
-      setSelectedPhotoIndex(null);
-      document.body.style.overflow = 'unset';
+      closeLightbox();
     }
-  }, [selectedPhotoIndex, currentPhotos.length]);
+  }, [selectedPhotoIndex, currentPhotos.length, closeLightbox]);
 
   // Keyboard navigation for lightbox
   useEffect(() => {
@@ -374,26 +433,19 @@ const Photography: React.FC = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
         e.preventDefault();
-        if (selectedPhotoIndex !== null && currentPhotos.length > 0) {
-          const newIndex = selectedPhotoIndex > 0 ? selectedPhotoIndex - 1 : currentPhotos.length - 1;
-          setSelectedPhotoIndex(newIndex);
-        }
+        goToPreviousPhoto();
       } else if (e.key === 'ArrowRight') {
         e.preventDefault();
-        if (selectedPhotoIndex !== null && currentPhotos.length > 0) {
-          const newIndex = selectedPhotoIndex < currentPhotos.length - 1 ? selectedPhotoIndex + 1 : 0;
-          setSelectedPhotoIndex(newIndex);
-        }
+        goToNextPhoto();
       } else if (e.key === 'Escape') {
         e.preventDefault();
-        setSelectedPhotoIndex(null);
-        document.body.style.overflow = 'unset';
+        closeLightbox();
       }
     };
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [selectedPhotoIndex, currentPhotos.length]);
+  }, [selectedPhotoIndex, goToPreviousPhoto, goToNextPhoto, closeLightbox]);
 
   return (
     <div className="min-h-screen bg-[#dce6f1] dark:bg-[#012169] text-gray-900 dark:text-white">

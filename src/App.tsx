@@ -139,7 +139,7 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/projects/:slug" element={<ProjectPost />} />
-        <Route path="/photography" element={<Photography />} />
+        <Route path="/photography/:slug?" element={<Photography />} />
         <Route path="/" element={<HomePageWrapper titleBoxRef={titleBoxRef} />} />
       </Routes>
     </div>
