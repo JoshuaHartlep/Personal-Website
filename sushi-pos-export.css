@@ -131,10 +131,23 @@ hr {
   border-bottom: 3px solid #b91c1c;
 }
 
+.demo-video-link {
+  margin: 10px 0 6px 0;
+}
+
+.demo-video-link a {
+  font-size: 16pt;
+  font-weight: 700;
+  color: #b91c1c;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  letter-spacing: -0.2px;
+}
+
 .doc-meta {
   font-size: 9.5pt;
   color: #555;
-  margin-top: 6px;
+  margin-top: 4px;
 }
 
 .doc-meta a {

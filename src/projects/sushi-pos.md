@@ -5,8 +5,9 @@ description: "A full-stack point-of-sale system built for restaurants — covers
 thumbnail: "KoiSushi.jpeg"
 technologies: ["React", "TypeScript", "FastAPI", "Python", "PostgreSQL", "TanStack Query", "Tailwind CSS", "Supabase"]
 githubUrl: "https://github.com/JoshuaHartlep/Sushi-Point-of-Sale-Interface"
-demoUrl: "https://sushi-point-of-sale-interface.vercel.app/"
+demoUrl: "https://youtu.be/hSqJBXkAYz8"
 demoMessage: null
+projectUrl: "https://sushi-point-of-sale-interface.vercel.app/"
 ---
 
 # Sushi POS System
