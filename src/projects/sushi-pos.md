@@ -1,6 +1,6 @@
 ---
 title: "Sushi POS System"
-date: "2025-05-12"
+date: "2026-02-15"
 description: "A full-stack point-of-sale system built for restaurants — covers order management, table tracking, customer ordering, photo moderation, and a deep analytics panel called The Lens."
 thumbnail: "KoiSushi.jpeg"
 technologies: ["React", "TypeScript", "FastAPI", "Python", "PostgreSQL", "TanStack Query", "Tailwind CSS", "Supabase"]

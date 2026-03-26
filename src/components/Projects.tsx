@@ -9,6 +9,7 @@ import koiSushi from '../assets/KoiSushi.jpeg';
 import electricalPanel from '../assets/ElectricalPanel.jpg';
 import groupPicture from '../assets/projects/Stool-Sampler/GroupPicture.png';
 import gymMonster from '../assets/GymMonsterThumbnail.png';
+import logoDarkMode from '../assets/LogoDarkMode.png';
 
 // Asset mapping for project thumbnails
 const thumbnailMap: Record<string, string> = {
@@ -16,6 +17,7 @@ const thumbnailMap: Record<string, string> = {
   'ElectricalPanel.jpg': electricalPanel,
   'projects/Stool-Sampler/GroupPicture.png': groupPicture,
   'GymMonsterThumbnail.png': gymMonster,
+  'LogoDarkMode.png': logoDarkMode,
 };
 
 // Helper function to highlight matching text
