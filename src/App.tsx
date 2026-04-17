@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import Home from './components/Home';
+import ResumeViewer from './components/ResumeViewer';
 import Blog from './components/Blog';
 import BlogPost from './components/BlogPost';
 import ProjectPost from './components/ProjectPost';
@@ -137,6 +138,7 @@ const App: React.FC = () => {
       <FloatingLogo />
 
       <Routes>
+        <Route path="/resume" element={<ResumeViewer />} />
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/projects/:slug" element={<ProjectPost />} />
         <Route path="/photography/:slug?" element={<Photography />} />

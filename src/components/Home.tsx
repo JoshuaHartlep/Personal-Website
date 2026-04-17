@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
   const firstName = "Joshua";
   const lastName = "Hartlep";
+  const navigate = useNavigate();
 
   return (
     <div className="h-full flex flex-col justify-center">
@@ -59,6 +61,19 @@ const Home = () => {
               >
                 Future-Ready Engineer | ECE & CS @ Duke | Product + Systems Builder
               </motion.p>
+              <motion.div
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: (firstName.length + lastName.length + 1) * 0.1 + 0.7, duration: 0.4 }}
+                className="mt-4 flex justify-center"
+              >
+                <button
+                  onClick={() => navigate('/resume')}
+                  className="px-5 py-2 rounded-full text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 shadow-sm"
+                >
+                  View Resume
+                </button>
+              </motion.div>
             </div>
           </motion.div>
         </div>
