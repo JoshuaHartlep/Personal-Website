@@ -9,6 +9,7 @@ import { useDocumentMeta } from '../utils/useDocumentMeta';
 // Import all project assets
 import koiSushi from '../assets/KoiSushi.jpeg';
 import electricalPanel from '../assets/ElectricalPanel.jpg';
+import logoDarkMode from '../assets/LogoDarkMode.png';
 import groupPicture from '../assets/projects/Stool-Sampler/GroupPicture.png';
 import lowFidelity from '../assets/projects/Stool-Sampler/LowFidelity.png';
 import final3dModel from '../assets/projects/Stool-Sampler/Final3dModel.png';
@@ -21,6 +22,7 @@ import lockingMechanism from '../assets/projects/Stool-Sampler/LockingMechanism.
 const assetMap: Record<string, string> = {
   'KoiSushi.jpeg': koiSushi,
   'ElectricalPanel.jpg': electricalPanel,
+  'LogoDarkMode.png': logoDarkMode,
   'projects/Stool-Sampler/GroupPicture.png': groupPicture,
   'projects/Stool-Sampler/LowFidelity.png': lowFidelity,
   'projects/Stool-Sampler/Final3dModel.png': final3dModel,
