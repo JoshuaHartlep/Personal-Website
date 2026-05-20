@@ -32,7 +32,7 @@ const ResumeViewer: React.FC = () => {
         <h1 className="text-base font-semibold tracking-wide">Joshua Hartlep – Resume</h1>
 
         <a
-          href="/resume.pdf"
+          href="/resume-2026-05.pdf"
           download="Joshua_Hartlep_Resume.pdf"
           className="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200 shadow-sm"
         >
@@ -46,7 +46,7 @@ const ResumeViewer: React.FC = () => {
       {/* PDF embed */}
       <div className="flex-1 w-full">
         <iframe
-          src="/resume.pdf"
+          src="/resume-2026-05.pdf"
           title="Joshua Hartlep Resume"
           className="w-full h-full min-h-[calc(100vh-65px)]"
           style={{ border: 'none' }}
