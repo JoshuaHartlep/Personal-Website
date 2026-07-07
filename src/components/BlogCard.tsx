@@ -10,6 +10,7 @@ import NvidiaGTCParisBlogPic from '../assets/NvidiaGTCParisBlogPic.jpeg';
 import AnsysSimulationWorldThumbnail from '../assets/AnsysSimulationWorldThumbnail.jpg';
 import PowerliftingGroupPic from '../assets/PowerliftingGroupPic.jpeg';
 import BridgewaterHackathonLandscape from '../assets/BridgewaterHackathonLandscape.png';
+import AsanaWTCView from '../assets/AsanaWTCView.jpg';
 
 interface BlogCardProps {
   post: BlogPost;
@@ -45,6 +46,7 @@ const BlogCard: React.FC<BlogCardProps> = ({ post, searchTerm = '' }) => {
     'AnsysSimulationWorldThumbnail.jpg': AnsysSimulationWorldThumbnail,
     'PowerliftingGroupPic.jpeg': PowerliftingGroupPic,
     'BridgewaterHackathonLandscape.png': BridgewaterHackathonLandscape,
+    'AsanaWTCView.jpg': AsanaWTCView,
   };
   
   // Custom positioning for specific images - add new positions here

@@ -29,7 +29,11 @@ export const getBlogPosts = async (category?: string): Promise<BlogPost[]> => {
 
   for (const [path, loadContent] of Object.entries(blogFiles)) {
     // Extract category from path
-    const pathCategory = path.includes('/writeups/') ? 'writeups' : 'reflections';
+    const pathCategory = path.includes('/professional/')
+      ? 'professional'
+      : path.includes('/writeups/')
+        ? 'writeups'
+        : 'reflections';
     
     // Skip if category doesn't match
     if (category && pathCategory !== category) continue;

@@ -6,6 +6,7 @@ import type { BlogPost } from '../utils/blog';
 
 const Blog: React.FC = () => {
   const [writeups, setWriteups] = useState<BlogPost[]>([]);
+  const [professional, setProfessional] = useState<BlogPost[]>([]);
   const [reflections, setReflections] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
@@ -13,11 +14,13 @@ const Blog: React.FC = () => {
   useEffect(() => {
     const loadPosts = async () => {
       try {
-        const [writeupsData, reflectionsData] = await Promise.all([
+        const [writeupsData, professionalData, reflectionsData] = await Promise.all([
           getBlogPosts('writeups'),
+          getBlogPosts('professional'),
           getBlogPosts('reflections')
         ]);
         setWriteups(writeupsData);
+        setProfessional(professionalData);
         setReflections(reflectionsData);
       } catch (error) {
         console.error('Error loading blog posts:', error);
@@ -51,6 +54,15 @@ const Blog: React.FC = () => {
       post.tags.some(tag => tag.toLowerCase().includes(term))
     );
   }, [writeups, searchTerm]);
+
+  const filteredProfessional = useMemo(() => {
+    if (!searchTerm.trim()) return professional;
+    const term = searchTerm.toLowerCase();
+    return professional.filter(post =>
+      post.title.toLowerCase().includes(term) ||
+      post.tags.some(tag => tag.toLowerCase().includes(term))
+    );
+  }, [professional, searchTerm]);
 
   const filteredReflections = useMemo(() => {
     if (!searchTerm.trim()) return reflections;
@@ -113,6 +125,15 @@ const Blog: React.FC = () => {
                 </div>
                 
                 <div>
+                  <h2 className="text-xl font-bold mb-4 font-mono text-center">Professional</h2>
+                  <div className="space-y-4">
+                    {filteredProfessional.map((post) => (
+                      <BlogCard key={post.slug} post={post} searchTerm={searchTerm} />
+                    ))}
+                  </div>
+                </div>
+
+                <div>
                   <h2 className="text-xl font-bold mb-4 font-mono text-center">Personal Reflections</h2>
                   <div className="space-y-4">
                     {filteredReflections.map((post) => (
@@ -123,13 +144,22 @@ const Blog: React.FC = () => {
               </div>
             </div>
 
-            {/* Desktop: Two column layout */}
+            {/* Desktop: Three column layout */}
             <div className="hidden md:block">
-              <div data-animate="fade-up" className="grid grid-cols-2 gap-8">
+              <div data-animate="fade-up" className="grid grid-cols-3 gap-8">
                 <div>
                   <h2 className="text-2xl font-bold mb-4 font-mono text-center sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">Tech Write-ups</h2>
                   <div className="space-y-4">
                     {filteredWriteups.map((post) => (
+                      <BlogCard key={post.slug} post={post} searchTerm={searchTerm} />
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h2 className="text-2xl font-bold mb-4 font-mono text-center sticky top-0 bg-white dark:bg-gray-900 z-10 py-2">Professional</h2>
+                  <div className="space-y-4">
+                    {filteredProfessional.map((post) => (
                       <BlogCard key={post.slug} post={post} searchTerm={searchTerm} />
                     ))}
                   </div>

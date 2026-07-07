@@ -1,7 +1,7 @@
 ---
 title: "Bridgewater AI Innovation Hackathon: Building Mr. Krabs and Winning $10K"
 date: "2026-04-25"
-category: "writeups"
+category: "professional"
 tags: ["bridgewater", "hackathon", "ai", "agents", "quant", "finance", "research-replication", "claude", "team-projects"]
 thumbnail: "BridgewaterHackathonLandscape.png"
 ---

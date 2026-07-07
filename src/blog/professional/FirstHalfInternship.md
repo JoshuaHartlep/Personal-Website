@@ -1,7 +1,7 @@
 ---
 title: "One Month In: What I've Learned as an Electrical/Software Engineering Intern"
 date: "2025-07-06"
-category: "reflections"
+category: "professional"
 tags: ["internship", "electrical-engineering", "software-engineering", "automation", "worthington", "professional-development"]
 thumbnail: "InternshipBlogPic.jpg"
 ---
